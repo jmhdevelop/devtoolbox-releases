@@ -793,3 +793,9 @@ details[open] { background: rgba(255,255,255,.035); }
 @media (max-width: 380px) {
   .hero .actions .btn, .price-box .btn { font-size: 13.5px; }
 }
+
+
+/* Todos los botones con la misma forma que el de la cabecera: cápsula. */
+.btn { border-radius: 99px; }
+.hero .actions .btn { min-height: 50px; }
+.price-box .btn { border-radius: 99px; }
