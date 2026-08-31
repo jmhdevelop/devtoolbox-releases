@@ -665,6 +665,9 @@ header .btn {
 header {
   position: fixed !important;
   top: 0; left: 0; right: 0;
+  /* `main, header, footer { z-index: 1 }` le había quitado su nivel y el
+     contenido le pasaba por encima al desplazar. */
+  z-index: 50 !important;
 }
 /* El contenido arranca por debajo de la cabecera, que ya no ocupa sitio. */
 body { padding-top: 78px; }
@@ -737,3 +740,23 @@ header .wrap { height: 78px; }
   .specs code { font-size: 12px; }
   .figure { gap: 10px; }
 }
+
+
+/* ── Sin líneas separadoras ───────────────────────────────────────────────
+   La separación la da el espacio, no un filete gris entre cada bloque. */
+
+section { border-top: 0; }
+details { border-bottom: 0; padding: 14px 0; }
+.specs li, .specs li:last-child { border-top: 0; border-bottom: 0; }
+
+/* Al perder el filete, las filas necesitan su propio aire y un realce al pasar. */
+.specs { margin-top: 36px; }
+.specs li { padding: 13px 14px; border-radius: 10px; transition: background .18s; }
+.specs li:hover { background: rgba(255,255,255,.035); }
+
+details {
+  border-radius: 10px; padding: 14px 14px;
+  transition: background .18s;
+}
+details:hover { background: rgba(255,255,255,.03); }
+details[open] { background: rgba(255,255,255,.035); }
