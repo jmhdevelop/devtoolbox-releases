@@ -766,15 +766,8 @@ details[open] { background: rgba(255,255,255,.035); }
    El importe manda y el impuesto es una aclaración: en la misma línea pero
    más pequeño y apagado, para que no parta el botón en dos renglones. */
 
-.btn small {
-  font-size: .8em; font-weight: 500; opacity: .58;
-  margin-left: .45em; white-space: nowrap;
-}
 .hero .actions .btn { white-space: nowrap; }
 
-/* En la caja de precio la aclaración va debajo, que hay sitio de sobra. */
-.price-box .btn { flex-direction: column; gap: 2px; line-height: 1.25; }
-.price-box .btn small { margin-left: 0; }
 
 @media (max-width: 620px) {
   /* Apilados y a todo el ancho: más fáciles de pulsar y sin partir el texto. */
