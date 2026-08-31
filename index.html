@@ -185,6 +185,49 @@ document.documentElement.classList.add('js');
 </section>
 
 <!-- ── Ver antes de borrar ─────────────────────────────────────────────── -->
+<section class="reveal disk">
+  <div class="wrap">
+    <p class="eyebrow">Lo que se recupera</p>
+    <div class="figure">
+      <p class="huge">42,4 <span>GB</span></p>
+      <p class="huge-cap">recuperables</p>
+    </div>
+
+    <!-- Una sola serie destacada sobre pista neutra. La pista queda por debajo
+         de 3:1 de contraste, así que las cifras van escritas, no solo en color. -->
+    <div class="diskbar" role="img"
+         aria-label="De 460 GB de disco, 42,4 GB son basura recuperable">
+      <span class="seg used" style="flex:325.6"></span>
+      <span class="seg junk" style="flex:42.4"></span>
+      <span class="seg free" style="flex:92"></span>
+    </div>
+    <div class="diskkey">
+      <span><i class="k-used"></i>Ocupado · 325,6 GB</span>
+      <span><i class="k-junk"></i>Recuperables · 42,4 GB</span>
+      <span><i class="k-free"></i>Libre · 92 GB</span>
+    </div>
+
+    <ol class="specs">
+        <li>
+          <code>~/Library/Developer/Xcode/DerivedData</code>
+          <span class="wgt"><i style="width:59%"></i></span>
+          <b>24,8 GB</b>
+        </li>
+        <li>
+          <code>~/Library/Developer/CoreSimulator</code>
+          <span class="wgt"><i style="width:26%"></i></span>
+          <b>11,2 GB</b>
+        </li>
+        <li>
+          <code>~/Library/Developer/Xcode/iOS DeviceSupport</code>
+          <span class="wgt"><i style="width:15%"></i></span>
+          <b>6,4 GB</b>
+        </li>
+    </ol>
+    <p class="specnote">Los tres primeros suelen ser el 80% del total.</p>
+  </div>
+</section>
+
 <section class="reveal">
   <div class="wrap split">
     <div>

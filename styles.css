@@ -683,3 +683,57 @@ header .wrap { height: 78px; }
   header .wrap { height: 60px; }
   .logo img { width: 38px !important; height: 38px !important; }
 }
+
+
+/* ── Sección de disco ─────────────────────────────────────────────────────
+   Una cifra grande hace el trabajo principal; la barra es la prueba. Una sola
+   serie destacada: nada de repartir colores entre categorías, que ni se
+   distinguirían ni dirían nada que la lista de rutas no diga mejor. */
+
+.disk .wrap { max-width: 900px; }
+
+.figure { display: flex; align-items: baseline; gap: 14px; margin: 6px 0 26px; }
+.huge {
+  font-size: clamp(4rem, 13vw, 8.5rem); line-height: .86; font-weight: 700;
+  letter-spacing: -.055em; font-variant-numeric: tabular-nums;
+  background: linear-gradient(170deg, #fff 20%, #7c848a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.huge span { font-size: .32em; letter-spacing: -.02em; margin-left: .08em; }
+.huge-cap { font-size: 17px; color: var(--muted); }
+
+/* Barra: extremos redondeados de 4px, separación de 2px entre tramos. */
+.diskbar { display: flex; gap: 2px; height: 14px; margin-bottom: 14px; }
+.seg { border-radius: 3px; }
+.seg.used { background: #2f353b; }
+.seg.junk { background: var(--green); }
+.seg.free { background: #191d21; }
+
+.diskkey { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--muted); }
+.diskkey span { display: inline-flex; align-items: center; gap: 8px; }
+.diskkey i { width: 9px; height: 9px; border-radius: 2px; }
+.k-used { background: #2f353b; } .k-junk { background: var(--green); } .k-free { background: #191d21; }
+
+/* Rutas reales en monoespaciada: es lo que un desarrollador reconoce de un
+   vistazo, y dice más que seis tarjetas con iconos. */
+.specs { list-style: none; margin: 44px 0 0; counter-reset: n; }
+.specs li {
+  display: grid; grid-template-columns: 1fr 120px auto; align-items: center;
+  gap: 20px; padding: 15px 0; border-top: 1px solid var(--line);
+}
+.specs li:last-child { border-bottom: 1px solid var(--line); }
+.specs code {
+  font: 400 13.5px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted); word-break: break-all;
+}
+.specs b { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
+.wgt { display: block; height: 4px; border-radius: 2px; background: #23282d; }
+.wgt i { display: block; height: 100%; border-radius: 2px; background: var(--green); }
+.specnote { margin-top: 16px; font-size: 13px; color: var(--faint); }
+
+@media (max-width: 700px) {
+  .specs li { grid-template-columns: 1fr auto; gap: 6px 14px; }
+  .wgt { grid-column: 1 / -1; order: 3; }
+  .specs code { font-size: 12px; }
+  .figure { gap: 10px; }
+}
