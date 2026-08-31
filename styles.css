@@ -576,9 +576,38 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 /* Solo para lectores de pantalla: describe el panel, que es una demo. */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
 }
 
 @media (max-width: 420px) {
   .rows .row + .row::before { left: 40px; }
+}
+
+
+/* ── Impresión y exportación a PDF ────────────────────────────────────────
+   El resplandor de fondo es un degradado radial fijo: al imprimir se rasteriza
+   como una mancha azul sólida. Fuera, junto al resto de adornos flotantes. */
+
+@media print {
+  .glow, .progress, .top, .mobile-bar { display: none !important; }
+
+  header { position: static; backdrop-filter: none; }
+  header nav, .lang { display: none; }
+
+  /* En papel no hay nada que desplegar: se muestran todas las respuestas. */
+  details > p { display: block !important; }
+  summary::after { content: ""; }
+
+  section { padding: 34px 0; break-inside: avoid; }
+  .card, .price-box, .panel { break-inside: avoid; }
+
+  /* Sin animación de entrada: si no, las secciones salen en blanco. */
+  .reveal, .card, .price-box { opacity: 1 !important; transform: none !important; }
+
+  /* Los fondos oscuros y las barras de color son la identidad: se conservan. */
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #8b9298; }
+  a[href^="#"]::after { content: ""; }
 }

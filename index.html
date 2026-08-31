@@ -446,5 +446,17 @@
 </footer>
 
   <script src="app.js" defer></script>
+  <script>
+    /* Al imprimir se abren todas las preguntas y se restauran después: en papel
+       no hay nada que desplegar. */
+    addEventListener('beforeprint', () =>
+      document.querySelectorAll('details').forEach((d) => {
+        d.dataset.was = d.open; d.open = true;
+      }));
+    addEventListener('afterprint', () =>
+      document.querySelectorAll('details').forEach((d) => {
+        d.open = d.dataset.was === 'true';
+      }));
+  </script>
 </body>
 </html>
