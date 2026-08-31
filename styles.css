@@ -341,3 +341,104 @@ button.row:hover { background: #1e2225; }
   .row .sub { display: none; }        /* en 375 px el subtítulo solo estorba */
   .price { font-size: 46px; }
 }
+
+
+/* ── Fidelidad con la app ─────────────────────────────────────────────────
+   Las medidas de aquí abajo son las del panel real: radio 10 en las baldosas,
+   12 en la lista, borde de medio punto y sombra corta. Si cambia la app,
+   cambia esto. */
+
+.panel {
+  background: linear-gradient(180deg, #17191c 0%, #121417 100%);
+  border: 1px solid #2b2f34; border-radius: 18px; padding: 14px;
+  box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03) inset;
+}
+
+/* Baldosas: material translúcido, filo claro arriba y sombra que las levanta. */
+.tile {
+  background: linear-gradient(180deg, #23272b 0%, #1d2124 100%);
+  border: .5px solid rgba(255,255,255,.12);
+  box-shadow: 0 3px 6px rgba(0,0,0,.28);
+  border-radius: 10px;
+}
+.tile .label { letter-spacing: .07em; font-weight: 700; }
+.tile .value { font-weight: 600; letter-spacing: -.01em; }
+
+/* Carril hundido y pastilla elevada, como el selector de la app. */
+.tabs { background: rgba(255,255,255,.07); padding: 2px; border-radius: 9px; }
+.tabs button.on {
+  background: linear-gradient(180deg, #2a2e33 0%, #232729 100%);
+  border: .5px solid rgba(255,255,255,.14);
+  box-shadow: 0 2px 5px rgba(0,0,0,.35);
+}
+
+/* Un solo panel con separadores finos sangrados, no tarjetas sueltas. */
+.rows {
+  background: rgba(255,255,255,.04);
+  border: .5px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+}
+.row { border-bottom: .5px solid rgba(255,255,255,.06); }
+.row:last-of-type { border-bottom: 0; }
+.row .check { border-radius: 99px; border: 1.5px solid rgba(255,255,255,.28); }
+.row .check.on { background: var(--text); border-color: var(--text); position: relative; }
+.row .check.on::after {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: 5px; height: 8px; border: solid #101214;
+  border-width: 0 1.6px 1.6px 0; transform: rotate(42deg) translate(-1px,-1px);
+}
+/* La selección se señala una vez, no tres. */
+button.row:has(.check.on) { background: rgba(255,255,255,.055); }
+
+/* El botón es del mismo material que las pestañas, sin azul de sistema. */
+.cta-row {
+  background: linear-gradient(180deg, #2a2e33 0%, #232729 100%);
+  border: .5px solid rgba(255,255,255,.16);
+  box-shadow: 0 3px 8px rgba(0,0,0,.35);
+  border-radius: 9px; color: var(--text);
+}
+
+/* ── Más carácter ─────────────────────────────────────────────────────── */
+
+.glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(760px 420px at 78% 8%, rgba(10,132,255,.14), transparent 62%),
+    radial-gradient(620px 380px at 12% 2%, rgba(50,215,75,.09), transparent 60%);
+}
+main, header, footer { position: relative; z-index: 1; }
+
+h1 em {
+  font-style: normal;
+  background: linear-gradient(96deg, var(--green) 0%, #7ee8a2 42%, var(--blue) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Rótulo con filete, para que las secciones tengan entrada. */
+.eyebrow { display: flex; align-items: center; gap: 10px; }
+.eyebrow::before {
+  content: ""; width: 22px; height: 1px; background: var(--line); flex: none;
+}
+.wrap[style*="center"] .eyebrow { justify-content: center; }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+  position: relative; overflow: hidden;
+}
+.card::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(340px 160px at 50% -30%, rgba(255,255,255,.07), transparent 70%);
+  opacity: 0; transition: opacity .3s;
+}
+.card.in:hover::after { opacity: 1; }
+
+.price-box {
+  background:
+    radial-gradient(520px 260px at 50% -10%, rgba(10,132,255,.12), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+.price { background: linear-gradient(180deg, #fff, #b9c0c5);
+         -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.btn-primary { box-shadow: 0 6px 22px rgba(255,255,255,.1); }
+summary:hover { color: #fff; }
