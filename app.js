@@ -32,3 +32,10 @@ targets.forEach((t) => spy.observe(t));
 
 document.querySelector('.top')?.addEventListener('click', () =>
   scrollTo({ top: 0, behavior: 'smooth' }));
+
+
+/* Al elegir idioma a mano, esa decisión pesa más que la del navegador. */
+document.querySelectorAll('.lang a').forEach((a) =>
+  a.addEventListener('click', () => {
+    try { localStorage.setItem('dtb-lang', a.getAttribute('hreflang')); } catch (e) {}
+  }));
