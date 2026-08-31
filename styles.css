@@ -37,7 +37,18 @@ header {
   border-bottom: 1px solid var(--line);
 }
 header .wrap { display: flex; align-items: center; gap: 20px; height: 58px; }
-.logo { font-weight: 700; letter-spacing: -.02em; font-size: 16px; }
+.logo {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 700; letter-spacing: -.02em; font-size: 16px;
+}
+/* El icono ya trae su propia sombra de macOS: basta con no deformarlo. */
+.logo img { width: 26px; height: 26px; display: block; flex: none; }
+.logo:hover span { color: #fff; }
+
+@media (max-width: 420px) {
+  .logo span { display: none; }   /* en pantalla estrecha manda el icono */
+  .logo img { width: 28px; height: 28px; }
+}
 header nav { margin-left: auto; display: flex; gap: 22px; }
 header nav a { color: var(--muted); font-size: 14px; }
 header nav a:hover { color: var(--text); }
