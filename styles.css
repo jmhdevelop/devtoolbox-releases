@@ -619,3 +619,32 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 @media (max-width: 860px) {
   .shot { margin: 0 auto; max-width: 380px; }
 }
+
+
+/* ── Cabecera reducida al icono y la acción ───────────────────────────────
+   Sin navegación ni conmutador: en una página de una sola columna los enlaces
+   de sección estorban más de lo que ayudan, y el botón queda siempre a mano
+   porque la cabecera es fija. */
+
+header .wrap { height: 66px; }
+.logo img { width: 38px; height: 38px; }
+header nav, header .lang { display: none; }
+header .btn { margin-left: auto; }
+
+/* El conmutador de idioma vive ahora en el pie. */
+footer .lang { margin-left: 0; }
+footer nav { margin-left: auto; }
+
+.mobile-bar { display: none !important; }
+
+@media (max-width: 860px) {
+  header .wrap { height: 60px; }
+  .logo img { width: 36px; height: 36px; }
+  main { padding-top: 0; }
+  footer { padding: 32px 0; }
+  footer .wrap { flex-direction: row; flex-wrap: wrap; align-items: center; }
+}
+
+@media (max-width: 420px) {
+  .logo img { width: 34px; height: 34px; }
+}
