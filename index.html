@@ -43,64 +43,64 @@
       <p class="note">14 días de prueba, sin tarjeta ni registro. macOS 14 o superior.</p>
     </div>
 
-    <!-- Réplica del panel real, en HTML: siempre coincide con la app. -->
-    <div class="panel" aria-hidden="true">
+    <!-- Simulador del panel: se toca, no es una captura. -->
+    <div class="panel" id="sim">
       <div class="tiles">
         <div class="tile">
-          <div class="label">Disco</div><div class="value">91,7 GB</div>
+          <div class="label">Disco</div><div class="value" id="vDisk">91,7 GB</div>
           <div class="cap">libres</div>
-          <div class="meter"><i style="width:56%;background:var(--green)"></i></div>
+          <div class="meter"><i id="bDisk" style="width:56%;background:var(--green)"></i></div>
         </div>
         <div class="tile">
-          <div class="label">RAM</div><div class="value">10 GB</div>
+          <div class="label">RAM</div><div class="value" id="vRam">10 GB</div>
           <div class="cap">de 17,2 GB</div>
-          <div class="meter"><i style="width:58%;background:var(--yellow)"></i></div>
+          <div class="meter"><i id="bRam" style="width:58%;background:var(--yellow)"></i></div>
         </div>
         <div class="tile">
-          <div class="label">CPU</div><div class="value">38 %</div>
+          <div class="label">CPU</div><div class="value" id="vCpu">38 %</div>
           <div class="cap">en uso</div>
-          <div class="meter"><i style="width:38%;background:var(--red)"></i></div>
+          <div class="meter"><i id="bCpu" style="width:38%;background:var(--red)"></i></div>
         </div>
         <div class="tile">
-          <div class="label">Red</div><div class="value">↓ 1,1M</div>
-          <div class="cap">↑ 10K</div>
-          <div class="meter"><i style="width:72%;background:var(--blue)"></i></div>
+          <div class="label">Red</div><div class="value" id="vNet">↓ 1,1M</div>
+          <div class="cap" id="vNetUp">↑ 10K</div>
+          <div class="meter"><i id="bNet" style="width:72%;background:var(--blue)"></i></div>
         </div>
       </div>
 
-      <div class="tabs">
-        <span class="on">Limpiador</span><span>Apps</span><span>Procesos</span><span>Ajustes</span>
+      <div class="tabs" role="tablist">
+        <button class="on" data-tab="0">Limpiador</button>
+        <button data-tab="1">Apps</button>
+        <button data-tab="2">Procesos</button>
+        <button data-tab="3">Ajustes</button>
       </div>
 
-      <div class="rows">
-        <div class="row">
-          <span class="check on"></span>
-          <span><span class="name">DerivedData</span><br><span class="sub">Builds intermedios de Xcode</span></span>
-          <span class="size">24,8 GB</span>
-        </div>
-        <div class="row">
-          <span class="check on"></span>
-          <span><span class="name">Simuladores sin usar</span><br><span class="sub">Dispositivos que ya no soporta</span></span>
-          <span class="size">11,2 GB</span>
-        </div>
-        <div class="row">
-          <span class="check on"></span>
-          <span><span class="name">iOS DeviceSupport</span><br><span class="sub">Símbolos de versiones antiguas</span></span>
-          <span class="size">6,4 GB</span>
-        </div>
-        <div class="row">
-          <span class="check"></span>
-          <span><span class="name">node_modules</span><br><span class="sub">En ~/Projects</span></span>
-          <span class="size">3,1 GB</span>
-        </div>
+      <div class="pane on" data-pane="0">
+        <div class="rows" id="cleanRows"></div>
+        <button class="cta-row" id="cleanBtn">🗑 Limpiar <span id="cleanTotal">42,4 GB</span></button>
+        <p class="hint">Marca categorías y pulsa limpiar.</p>
       </div>
-      <div class="cta-row">🗑 Limpiar 42,4 GB</div>
+
+      <div class="pane" data-pane="1">
+        <div class="rows" id="appRows"></div>
+        <p class="hint">Se lleva también lo que deja en <code>~/Library</code>.</p>
+      </div>
+
+      <div class="pane" data-pane="2">
+        <div class="rows" id="procRows"></div>
+        <p class="hint">Se actualiza sola mientras la miras.</p>
+      </div>
+
+      <div class="pane" data-pane="3">
+        <div class="rows" id="setRows"></div>
+        <p class="hint">Los interruptores también funcionan.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── Ver antes de borrar ─────────────────────────────────────────────── -->
-<section>
+<section class="reveal">
   <div class="wrap split">
     <div>
       <p class="eyebrow">Sin sustos</p>
@@ -132,7 +132,7 @@
 </section>
 
 <!-- ── Funciones ───────────────────────────────────────────────────────── -->
-<section id="funciones">
+<section class="reveal" id="funciones">
   <div class="wrap">
     <p class="eyebrow">Qué hace</p>
     <h2>Seis herramientas, un icono.</h2>
@@ -180,7 +180,7 @@
 </section>
 
 <!-- ── Precio ──────────────────────────────────────────────────────────── -->
-<section id="precio">
+<section class="reveal" id="precio">
   <div class="wrap" style="text-align:center">
     <p class="eyebrow">Precio</p>
     <h2>Se paga una vez.</h2>
@@ -208,7 +208,7 @@
 </section>
 
 <!-- ── Lite ────────────────────────────────────────────────────────────── -->
-<section id="lite">
+<section class="reveal" id="lite">
   <div class="wrap split flip">
     <div>
       <div class="card">
@@ -232,7 +232,7 @@
 </section>
 
 <!-- ── Preguntas ───────────────────────────────────────────────────────── -->
-<section id="faq">
+<section class="reveal" id="faq">
   <div class="wrap" style="max-width:760px">
     <p class="eyebrow">Preguntas</p>
     <h2>Lo que suelen preguntar.</h2>
@@ -282,5 +282,6 @@
   </div>
 </footer>
 
+  <script src="app.js"></script>
 </body>
 </html>
