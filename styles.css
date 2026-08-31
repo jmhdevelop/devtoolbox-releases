@@ -648,3 +648,11 @@ footer nav { margin-left: auto; }
 @media (max-width: 420px) {
   .logo img { width: 34px; height: 34px; }
 }
+
+
+/* Botón de la cabecera: siempre a la derecha y en cápsula. */
+header .btn {
+  margin-left: auto;
+  border-radius: 99px;
+  padding: 9px 22px;
+}
