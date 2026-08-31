@@ -232,11 +232,11 @@ footer a:hover { color: var(--text); }
 .meter i, .tile .value { transition: width .5s ease, color .3s; }
 
 /* Aparición al entrar en pantalla */
-.reveal, .card, .price-box {
+.js .reveal, .js .card, .js .price-box {
   opacity: 0; transform: translateY(22px);
   transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
 }
-.reveal.in, .card.in, .price-box.in { opacity: 1; transform: none; }
+.reveal.in, .card.in, .price-box.in { opacity: 1 !important; transform: none !important; }
 .card { transition: opacity .6s, transform .6s, border-color .2s; }
 .card.in:hover { border-color: #3a4046; transform: translateY(-3px); }
 
