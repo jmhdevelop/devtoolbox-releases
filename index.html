@@ -3,12 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DevToolbox — Limpia tu Mac de basura de desarrollo</title>
-<meta name="description" content="Utilidad de barra de menús para macOS. Recupera los gigas que Xcode, los simuladores y node_modules se comen sin que te enteres. 5 € de por vida.">
-<meta property="og:title" content="DevToolbox">
-<meta property="og:description" content="Recupera los gigas que Xcode se come sin que te enteres.">
+
+<title>DevToolbox — Limpia DerivedData, simuladores y cachés de Xcode en Mac</title>
+<meta name="description" content="Utilidad de barra de menús para macOS que libera los gigas que Xcode, los simuladores de iOS, Homebrew y node_modules ocupan sin avisar. Escanea, te enseña cuánto pesa cada cosa y borra a la Papelera. 5 € de por vida.">
+<link rel="canonical" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="DevToolbox">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DevToolbox">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://jmhdevelop.github.io/devtoolbox-releases/">
+<meta property="og:title" content="DevToolbox — Limpia la basura de desarrollo de tu Mac">
+<meta property="og:description" content="DerivedData, simuladores sin usar, cachés y node_modules. Te enseña cuánto ocupa cada cosa antes de borrar nada. 5 € de por vida.">
+<meta property="og:image" content="https://jmhdevelop.github.io/devtoolbox-releases/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DevToolbox: tu Mac tiene 40 GB de basura de Xcode">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DevToolbox — Limpia la basura de desarrollo de tu Mac">
+<meta name="twitter:description" content="DerivedData, simuladores, cachés y node_modules. 5 € de por vida.">
+<meta name="twitter:image" content="https://jmhdevelop.github.io/devtoolbox-releases/og.png">
+
 <meta name="theme-color" content="#08090a">
 <link rel="stylesheet" href="styles.css">
+
+<!-- Datos estructurados: es lo que leen tanto Google para los resultados
+     enriquecidos como los rastreadores de IA para citar con precisión. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://jmhdevelop.github.io/devtoolbox-releases/#app",
+      "name": "DevToolbox",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Utilidad de limpieza y monitorización",
+      "operatingSystem": "macOS 14.0 o superior",
+      "softwareVersion": "1.0",
+      "url": "https://jmhdevelop.github.io/devtoolbox-releases/",
+      "downloadUrl": "https://github.com/jmhdevelop/devtoolbox-releases/releases/latest",
+      "screenshot": "https://jmhdevelop.github.io/devtoolbox-releases/og.png",
+      "inLanguage": "es",
+      "description": "Utilidad de barra de menús para macOS que localiza y elimina la basura que genera el desarrollo: DerivedData de Xcode, simuladores de iOS sin usar, iOS DeviceSupport, cachés de Homebrew, SwiftPM, npm y bun, y carpetas node_modules. Muestra el tamaño de cada categoría antes de borrar y envía todo a la Papelera. Incluye desinstalador de aplicaciones con archivos residuales, métricas de CPU, memoria, disco y red en la barra de menús, lista de procesos y modo de mantener el Mac despierto.",
+      "featureList": [
+        "Limpieza de DerivedData y cachés de Xcode",
+        "Eliminación de simuladores de iOS sin usar mediante simctl",
+        "Limpieza automática programada",
+        "Desinstalador de apps con archivos residuales de ~/Library",
+        "Métricas de CPU, memoria, disco y red en la barra de menús",
+        "Lista de procesos con mayor consumo",
+        "Mantener el Mac despierto durante compilaciones largas"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "5.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://jmhdevelop.github.io/devtoolbox-releases/#precio",
+        "description": "Licencia perpetua, un solo pago, actualizaciones incluidas. IVA no incluido."
+      },
+      "softwareHelp": "https://jmhdevelop.github.io/devtoolbox-releases/#faq"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jmhdevelop.github.io/devtoolbox-releases/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Por qué DevToolbox no está en la Mac App Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque el sandbox obligatorio de la App Store impide leer ~/Library, ejecutar simctl y modificar /Applications, que es justo lo que necesita para limpiar. Una versión sandboxed no podría borrar DerivedData ni desinstalar aplicaciones. Lo que sí cabe dentro del sandbox se publica aparte como DevToolbox Lite, gratuita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro instalar DevToolbox fuera de la App Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La aplicación va firmada con Developer ID y notarizada por Apple, de modo que macOS la abre sin advertencias de Gatekeeper. Cada actualización se descarga firmada con EdDSA y la app la rechaza si la firma no coincide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué borra exactamente DevToolbox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Solo las categorías que marques, y siempre a la Papelera. Antes de confirmar muestra el listado completo con rutas y tamaños. Los simuladores se eliminan con simctl, la vía oficial de Apple: borrar sus carpetas a mano deja Xcode en estado inconsistente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La licencia de DevToolbox sirve en varios Macs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. La licencia es del usuario, no de la máquina, y se valida sin conexión a internet, por lo que puede usarse en todos tus Macs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta DevToolbox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "5 euros más IVA, en un pago único. La licencia es perpetua e incluye las actualizaciones. Hay 14 días de prueba con todas las funciones, sin tarjeta ni registro."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -26,6 +133,7 @@
 </header>
 
 <!-- ── Portada ─────────────────────────────────────────────────────────── -->
+<main>
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -40,7 +148,7 @@
         <a class="btn btn-primary" href="#precio">Comprar por 5 €</a>
         <a class="btn btn-ghost" href="https://github.com/jmhdevelop/devtoolbox-releases/releases/latest">Descargar y probar</a>
       </div>
-      <p class="note">14 días de prueba, sin tarjeta ni registro. macOS 14 o superior.</p>
+      <p class="note" id="que-es"><strong>DevToolbox</strong> es una utilidad de barra de menús para macOS 14 o superior que libera espacio eliminando los archivos temporales del desarrollo en Xcode, iOS y Node.js.<br>14 días de prueba, sin tarjeta ni registro. macOS 14 o superior.</p>
     </div>
 
     <!-- Simulador del panel: se toca, no es una captura. -->
@@ -272,6 +380,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
     <span>© 2026 DevToolbox</span>
@@ -282,6 +392,6 @@
   </div>
 </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

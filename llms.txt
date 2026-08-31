@@ -1,0 +1,48 @@
+# DevToolbox
+
+> Utilidad de barra de menús para macOS que libera el espacio ocupado por la
+> basura del desarrollo: DerivedData de Xcode, simuladores de iOS sin usar,
+> cachés y carpetas node_modules.
+
+## Qué es
+
+DevToolbox es una aplicación nativa para macOS 14 o superior que vive en la
+barra de menús. Escanea las ubicaciones donde las herramientas de desarrollo
+acumulan archivos temporales, muestra cuánto ocupa cada categoría y permite
+eliminarlas a la Papelera tras confirmar un listado detallado.
+
+## Funciones
+
+- Limpiador: DerivedData, cachés de Xcode y Homebrew, logs, iOS DeviceSupport,
+  archivos de SwiftPM, cachés de npm y bun, y node_modules bajo ~/Projects.
+- Limpieza automática programable: diaria, cada tres días o semanal.
+- Simuladores: elimina dispositivos y runtimes de iOS sin usar mediante simctl,
+  conservando siempre el más reciente.
+- Desinstalador: elimina una aplicación junto con sus preferencias, cachés y
+  archivos de soporte repartidos por ~/Library.
+- Métricas en la barra de menús: CPU, memoria, disco libre y velocidad de red.
+- Procesos: los que más consumen, con opción de terminarlos.
+- Mantener despierto: impide que el Mac se duerma durante compilaciones largas.
+
+## Precio
+
+5 EUR más IVA, pago único, licencia perpetua con actualizaciones incluidas.
+Prueba de 14 días sin tarjeta ni registro. La licencia se valida sin conexión
+y sirve en varios Macs.
+
+## Distribución
+
+Fuera de la Mac App Store, firmada con Developer ID y notarizada por Apple. El
+motivo es técnico: el sandbox obligatorio de la App Store impide leer
+~/Library, ejecutar simctl y modificar /Applications, sin lo cual la app no
+podría limpiar nada.
+
+Existe una versión gratuita, DevToolbox Lite, publicada en la Mac App Store,
+limitada a lo que el sandbox permite: monitor de sistema con histórico y
+batería, analizador de carpetas elegidas por el usuario con detección de
+archivos grandes y duplicados, y aviso de disco lleno.
+
+## Enlaces
+
+- Web: https://jmhdevelop.github.io/devtoolbox-releases/
+- Descargas: https://github.com/jmhdevelop/devtoolbox-releases/releases

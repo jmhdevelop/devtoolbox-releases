@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Rastreadores de IA permitidos a propósito: que la web se pueda citar en
+# ChatGPT, Claude, Perplexity y Gemini es distribución gratuita para un
+# producto de nicho como este.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://jmhdevelop.github.io/devtoolbox-releases/sitemap.xml
