@@ -2,16 +2,31 @@
    Sin dependencias. */
 
 const $ = (sel) => document.querySelector(sel);
+
+/* Trazos simples en currentColor: pesan nada y heredan el gris del sistema. */
+const ICON = {
+  hammer: '<path d="M2 14l6-6M8 8l3-3 1 1 3-3-2-2-3 3-1-1-3 3z"/>',
+  phone:  '<rect x="4" y="1.5" width="8" height="13" rx="2"/><path d="M7 12.5h2"/>',
+  cable:  '<path d="M5 2v4a3 3 0 006 0V2M8 9v5"/>',
+  box:    '<path d="M8 1.5l6 3v7l-6 3-6-3v-7z"/><path d="M2 4.5l6 3 6-3M8 7.5v7"/>',
+  folder: '<path d="M1.5 4.5h4l1.5 2h7.5v7h-13z"/>',
+  sparkle:'<path d="M8 1.5l1.4 3.6L13 6.5l-3.6 1.4L8 11.5 6.6 7.9 3 6.5l3.6-1.4z"/>',
+  grid:   '<rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/>',
+  gauge:  '<circle cx="8" cy="8" r="6"/><path d="M8 8l3-2.5"/>',
+  gear:   '<circle cx="8" cy="8" r="2.6"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M12.5 3.5l-1.4 1.4M4.9 11.1l-1.4 1.4"/>',
+};
+const svg = (name) => `<span class="glyph" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"
+  stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${ICON[name]}</svg></span>`;
 const gb = (n) => n.toFixed(1).replace('.', ',') + ' GB';
 
 /* ── Limpiador ─────────────────────────────────────────────────────────── */
 
 const CATEGORIES = [
-  { name: 'DerivedData',         sub: 'Builds intermedios de Xcode',      size: 24.8, on: true },
-  { name: 'Simuladores sin usar', sub: 'Dispositivos que ya no soporta',  size: 11.2, on: true },
-  { name: 'iOS DeviceSupport',   sub: 'Símbolos de versiones antiguas',   size: 6.4,  on: true },
-  { name: 'Caches de usuario',   sub: 'Xcode, Homebrew, apps',            size: 2.9,  on: false },
-  { name: 'node_modules',        sub: 'En ~/Projects',                    size: 3.1,  on: false },
+  { icon: 'hammer', name: 'DerivedData',          sub: 'Builds intermedios de Xcode',    size: 24.8, n: 12, on: true },
+  { icon: 'phone',  name: 'Simuladores sin usar', sub: 'Dispositivos que ya no soporta', size: 11.2, n: 7,  on: true },
+  { icon: 'cable',  name: 'iOS DeviceSupport',    sub: 'Símbolos de versiones antiguas', size: 6.4,  n: 4,  on: true },
+  { icon: 'box',    name: 'Caches de usuario',    sub: 'Xcode, Homebrew, apps',          size: 2.9,  n: 63, on: false },
+  { icon: 'folder', name: 'node_modules',         sub: 'En ~/Projects',                  size: 3.1,  n: 9,  on: false },
 ];
 
 let cats = CATEGORIES.map((c) => ({ ...c }));
@@ -20,7 +35,9 @@ function renderClean() {
   $('#cleanRows').innerHTML = cats.map((c, i) => `
     <button class="row" data-cat="${i}" role="checkbox" aria-checked="${c.on}">
       <span class="check ${c.on ? 'on' : ''}" aria-hidden="true"></span>
-      <span class="txt"><span class="name">${c.name}</span><br><span class="sub">${c.sub}</span></span>
+      ${svg(c.icon)}
+      <span class="txt"><span class="name">${c.name}</span><span class="sub">${c.sub}</span></span>
+      <span class="count">${c.n}</span>
       <span class="size">${gb(c.size)}</span>
     </button>`).join('');
 
@@ -81,8 +98,8 @@ $('#appRows').innerHTML = [
   ['Android Studio', 'App 3,4 GB · 92 archivos relacionados', '12,8 GB'],
   ['Docker',         'App 2,1 GB · 58 archivos relacionados', '9,4 GB'],
   ['Figma',          'App 1,2 GB · 34 archivos relacionados', '1,6 GB'],
-].map(([n, s, z]) => `<div class="row"><span class="ico">📦</span>
-  <span class="txt"><span class="name">${n}</span><br><span class="sub">${s}</span></span>
+].map(([n, s, z]) => `<div class="row">${svg('box')}
+  <span class="txt"><span class="name">${n}</span><span class="sub">${s}</span></span>
   <span class="size">${z}</span></div>`).join('');
 
 const PROCS = [
@@ -93,7 +110,7 @@ function renderProcs() {
   $('#procRows').innerHTML = PROCS.map(([n, pid]) => {
     const cpu = Math.max(1, Math.round(Math.random() * 40));
     const ram = 40 + Math.round(Math.random() * 900);
-    return `<div class="row"><span class="txt"><span class="name">${n}</span><br>
+    return `<div class="row"><span class="txt"><span class="name">${n}</span>
       <span class="sub">PID ${pid}</span></span>
       <span class="size">${cpu}%</span><span class="size ram">${ram} MB</span></div>`;
   }).join('');
@@ -101,9 +118,9 @@ function renderProcs() {
 renderProcs();
 
 $('#setRows').innerHTML = [
-  ['🤖', 'Auto-limpieza', 'Cada 3 días', true],
-  ['☕', 'Mantener el Mac despierto', 'Para builds largos', false],
-  ['⚡', 'Arrancar al iniciar sesión', '', true],
+  ['sparkle', 'Auto-limpieza', 'Cada 3 días', true],
+  ['box', 'Mantener el Mac despierto', 'Para builds largos', false],
+  ['gear', 'Arrancar al iniciar sesión', '', true],
 ].map(([i, n, s, on]) => `<button class="row sw-row"><span class="ico">${i}</span>
   <span class="txt"><span class="name">${n}</span>${s ? `<br><span class="sub">${s}</span>` : ''}</span>
   <span class="sw ${on ? 'on' : ''}"></span></button>`).join('');
@@ -126,6 +143,9 @@ function selectTab(btn) {
     p.classList.toggle('on', p.dataset.pane === btn.dataset.tab));
   if (btn.dataset.tab === '2') renderProcs();
 }
+
+const TAB_ICONS = ['sparkle', 'grid', 'gauge', 'gear'];
+tabs.forEach((b, i) => { b.innerHTML = svg(TAB_ICONS[i]) + b.textContent.trim(); });
 
 tabs.forEach((btn, i) => {
   btn.tabIndex = btn.classList.contains('on') ? 0 : -1;

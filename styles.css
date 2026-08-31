@@ -537,3 +537,56 @@ button.row[aria-checked="true"] .check { background: var(--text); border-color: 
   .progress { transition: none; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* ── Grises reales del panel ──────────────────────────────────────────────
+   macOS dibuja los niveles secundario y terciario como blanco con opacidad,
+   no como grises fijos. Subirlos para cumplir contraste hacía que el panel
+   dejara de parecerse a la app. Aquí se restauran los valores del sistema,
+   acotados al panel; el texto de la página sigue cumpliendo AA. */
+
+.panel {
+  --sec: rgba(255,255,255,.55);   /* secondaryLabelColor */
+  --ter: rgba(255,255,255,.26);   /* tertiaryLabelColor */
+  --qua: rgba(255,255,255,.10);   /* quaternaryLabelColor */
+}
+.panel .tile .label { color: var(--sec); }
+.panel .tile .cap   { color: var(--ter); }
+.panel .row .sub    { color: var(--ter); }
+.panel .tabs button { color: var(--sec); }
+.panel .tabs button.on { color: var(--text); }
+.panel .meter { background: var(--qua); }
+.panel .hint { color: var(--ter); }
+
+/* Icono gris de la fila, como el símbolo SF de la app. */
+.row .glyph { width: 18px; height: 18px; color: var(--sec); flex: none; }
+.row .glyph svg { width: 100%; height: 100%; display: block; }
+.tabs button svg { width: 11px; height: 11px; margin-right: 5px; vertical-align: -1px; }
+
+/* Contador de elementos: cápsula pequeña a la izquierda del tamaño. */
+.row .count {
+  font-size: 9.5px; font-weight: 500; color: var(--sec);
+  padding: 1.5px 5px; border-radius: 99px; background: var(--qua);
+  font-variant-numeric: tabular-nums;
+}
+
+/* En la app el separador va sangrado hasta el texto, no de borde a borde. */
+.rows .row { border-bottom: 0; position: relative; }
+.rows .row + .row::before {
+  content: ""; position: absolute; top: 0; left: 46px; right: 0;
+  height: .5px; background: rgba(255,255,255,.07);
+}
+
+.row { align-items: center; }
+.row .txt { min-width: 0; }
+.row .name, .row .sub { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Solo para lectores de pantalla: describe el panel, que es una demo. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 420px) {
+  .rows .row + .row::before { left: 40px; }
+}
