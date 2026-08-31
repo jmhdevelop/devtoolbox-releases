@@ -774,3 +774,22 @@ details[open] { background: rgba(255,255,255,.035); }
   .hero .actions { flex-direction: column; }
   .hero .actions .btn { width: 100%; }
 }
+
+
+/* ── Botones de compra ────────────────────────────────────────────────────
+   El precio con impuestos va completo en el botón: anunciar un importe sin
+   indicarlo es precio engañoso frente a consumidores. Para que quepa en una
+   línea, en pantallas estrechas los botones se apilan a todo el ancho y el
+   cuerpo baja un punto. */
+
+.hero .actions .btn { white-space: nowrap; }
+
+@media (max-width: 620px) {
+  .hero .actions { flex-direction: column; }
+  .hero .actions .btn { width: 100%; font-size: 14.5px; }
+  .price-box .btn { font-size: 14.5px; padding-inline: 12px; }
+}
+
+@media (max-width: 380px) {
+  .hero .actions .btn, .price-box .btn { font-size: 13.5px; }
+}
