@@ -1,0 +1,192 @@
+/* Paleta tomada de la propia app: cromo en grises y color solo donde mide algo. */
+:root {
+  --bg: #08090a;
+  --surface: #131517;
+  --surface-2: #1b1e21;
+  --line: #262a2e;
+  --text: #f3f5f6;
+  --muted: #8b9298;
+  --faint: #5c6469;
+  --green: #32d74b;
+  --yellow: #ffd60a;
+  --red: #ff453a;
+  --blue: #0a84ff;
+  --radius: 14px;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+/* ── Cabecera ─────────────────────────────────────────────────────────── */
+
+header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: saturate(160%) blur(14px);
+  background: rgba(8, 9, 10, .72);
+  border-bottom: 1px solid var(--line);
+}
+header .wrap { display: flex; align-items: center; gap: 20px; height: 58px; }
+.logo { font-weight: 700; letter-spacing: -.02em; font-size: 16px; }
+header nav { margin-left: auto; display: flex; gap: 22px; }
+header nav a { color: var(--muted); font-size: 14px; }
+header nav a:hover { color: var(--text); }
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Botones ──────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 10px;
+  font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+  border: 1px solid transparent; transition: transform .15s, background .15s;
+}
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--text); color: #0a0b0c; }
+.btn-primary:hover { background: #fff; }
+.btn-ghost { border-color: var(--line); background: var(--surface); color: var(--text); }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-sm { padding: 8px 16px; font-size: 14px; }
+
+/* ── Secciones ────────────────────────────────────────────────────────── */
+
+section { padding: 110px 0; border-top: 1px solid var(--line); }
+section:first-of-type { border-top: 0; }
+
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 14px;
+}
+h1 {
+  font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1.03;
+  font-weight: 700; letter-spacing: -.035em; margin-bottom: 22px;
+}
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.12;
+  font-weight: 700; letter-spacing: -.03em; margin-bottom: 16px;
+}
+h3 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 6px; }
+.lead { font-size: 19px; color: var(--muted); max-width: 44ch; }
+.muted { color: var(--muted); }
+.small { font-size: 14px; }
+
+/* ── Portada ──────────────────────────────────────────────────────────── */
+
+.hero { padding: 96px 0 84px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.hero .actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+.hero .note { margin-top: 16px; font-size: 13px; color: var(--faint); }
+
+/* Filas alternas, como la referencia. */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.split.flip > *:first-child { order: 2; }
+
+/* ── Réplica del panel ────────────────────────────────────────────────── */
+
+.panel {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 18px; padding: 14px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+}
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.tile {
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 10px; padding: 9px 10px;
+}
+.tile .label {
+  font-size: 9px; font-weight: 700; letter-spacing: .07em;
+  color: var(--muted); text-transform: uppercase;
+}
+.tile .value { font-size: 15px; font-weight: 600; margin-top: 2px; }
+.tile .cap { font-size: 9.5px; color: var(--faint); }
+.meter { height: 4px; border-radius: 99px; background: #33383d; margin-top: 8px; overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: 99px; }
+
+.tabs {
+  display: flex; gap: 2px; padding: 2px; margin: 12px 0 10px;
+  background: #23272b; border-radius: 9px; width: fit-content; margin-inline: auto;
+}
+.tabs span {
+  padding: 5px 14px; font-size: 11px; font-weight: 500;
+  color: var(--muted); border-radius: 7px;
+}
+.tabs .on { background: var(--surface-2); color: var(--text); border: .5px solid #3a3f44; }
+
+.rows { background: #191c1f; border-radius: 12px; overflow: hidden; }
+.row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; font-size: 12px;
+  border-bottom: 1px solid #212528;
+}
+.row:last-child { border-bottom: 0; }
+.row .check { width: 14px; height: 14px; border-radius: 99px; border: 1.5px solid var(--faint); flex: none; }
+.row .check.on { background: var(--text); border-color: var(--text); }
+.row .name { font-weight: 500; }
+.row .sub { color: var(--faint); font-size: 10px; }
+.row .size { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cta-row {
+  margin-top: 10px; text-align: center; padding: 9px;
+  background: var(--surface-2); border: .5px solid #3a3f44;
+  border-radius: 9px; font-size: 12px; font-weight: 600;
+}
+
+/* ── Rejilla de funciones ─────────────────────────────────────────────── */
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px;
+}
+.card p { color: var(--muted); font-size: 14.5px; }
+.dot { width: 9px; height: 9px; border-radius: 99px; display: inline-block; margin-bottom: 14px; }
+
+/* ── Precio ───────────────────────────────────────────────────────────── */
+
+.price-box {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 20px; padding: 40px; text-align: center; max-width: 460px; margin: 40px auto 0;
+}
+.price { font-size: 62px; font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+.price sup { font-size: 24px; font-weight: 600; vertical-align: super; }
+.price-box ul { list-style: none; text-align: left; margin: 28px 0; display: grid; gap: 10px; }
+.price-box li { color: var(--muted); font-size: 15px; padding-left: 24px; position: relative; }
+.price-box li::before {
+  content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700;
+}
+
+/* ── Preguntas ────────────────────────────────────────────────────────── */
+
+details {
+  border-bottom: 1px solid var(--line); padding: 20px 0;
+}
+summary { cursor: pointer; font-weight: 600; font-size: 16.5px; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; float: right; color: var(--faint); font-weight: 400; }
+details[open] summary::after { content: "−"; }
+details p { color: var(--muted); font-size: 15px; margin-top: 12px; max-width: 62ch; }
+
+/* ── Pie ──────────────────────────────────────────────────────────────── */
+
+footer { border-top: 1px solid var(--line); padding: 44px 0; color: var(--faint); font-size: 13.5px; }
+footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+footer nav { margin-left: auto; display: flex; gap: 20px; }
+footer a:hover { color: var(--text); }
+
+@media (max-width: 860px) {
+  .hero-grid, .split { grid-template-columns: 1fr; gap: 40px; }
+  .split.flip > *:first-child { order: 0; }
+  .grid { grid-template-columns: 1fr; }
+  section { padding: 76px 0; }
+  header nav { display: none; }
+}

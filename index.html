@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevToolbox — Limpia tu Mac de basura de desarrollo</title>
+<meta name="description" content="Utilidad de barra de menús para macOS. Recupera los gigas que Xcode, los simuladores y node_modules se comen sin que te enteres. 5 € de por vida.">
+<meta property="og:title" content="DevToolbox">
+<meta property="og:description" content="Recupera los gigas que Xcode se come sin que te enteres.">
+<meta name="theme-color" content="#08090a">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="logo">DevToolbox</span>
+    <nav>
+      <a href="#funciones">Funciones</a>
+      <a href="#precio">Precio</a>
+      <a href="#lite">Lite</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#precio">Comprar</a>
+  </div>
+</header>
+
+<!-- ── Portada ─────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">macOS · barra de menús</p>
+      <h1>Tu Mac tiene 40&nbsp;GB de basura de Xcode.</h1>
+      <p class="lead">
+        DerivedData, simuladores que no arrancas desde hace un año, cachés,
+        <code>node_modules</code> de proyectos muertos. DevToolbox te enseña
+        cuánto ocupa cada cosa antes de tocar nada.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#precio">Comprar por 5 €</a>
+        <a class="btn btn-ghost" href="https://github.com/jmhdevelop/devtoolbox-releases/releases/latest">Descargar y probar</a>
+      </div>
+      <p class="note">14 días de prueba, sin tarjeta ni registro. macOS 14 o superior.</p>
+    </div>
+
+    <!-- Réplica del panel real, en HTML: siempre coincide con la app. -->
+    <div class="panel" aria-hidden="true">
+      <div class="tiles">
+        <div class="tile">
+          <div class="label">Disco</div><div class="value">91,7 GB</div>
+          <div class="cap">libres</div>
+          <div class="meter"><i style="width:56%;background:var(--green)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">RAM</div><div class="value">10 GB</div>
+          <div class="cap">de 17,2 GB</div>
+          <div class="meter"><i style="width:58%;background:var(--yellow)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">CPU</div><div class="value">38 %</div>
+          <div class="cap">en uso</div>
+          <div class="meter"><i style="width:38%;background:var(--red)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">Red</div><div class="value">↓ 1,1M</div>
+          <div class="cap">↑ 10K</div>
+          <div class="meter"><i style="width:72%;background:var(--blue)"></i></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <span class="on">Limpiador</span><span>Apps</span><span>Procesos</span><span>Ajustes</span>
+      </div>
+
+      <div class="rows">
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">DerivedData</span><br><span class="sub">Builds intermedios de Xcode</span></span>
+          <span class="size">24,8 GB</span>
+        </div>
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">Simuladores sin usar</span><br><span class="sub">Dispositivos que ya no soporta</span></span>
+          <span class="size">11,2 GB</span>
+        </div>
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">iOS DeviceSupport</span><br><span class="sub">Símbolos de versiones antiguas</span></span>
+          <span class="size">6,4 GB</span>
+        </div>
+        <div class="row">
+          <span class="check"></span>
+          <span><span class="name">node_modules</span><br><span class="sub">En ~/Projects</span></span>
+          <span class="size">3,1 GB</span>
+        </div>
+      </div>
+      <div class="cta-row">🗑 Limpiar 42,4 GB</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ver antes de borrar ─────────────────────────────────────────────── -->
+<section>
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Sin sustos</p>
+      <h2>Primero enseña, después borra.</h2>
+      <p class="lead">
+        Nada desaparece sin que lo hayas visto. Escanea al abrirlo, te dice
+        cuánto pesa cada categoría y cuántos elementos hay dentro, y solo
+        entonces aparece el botón.
+      </p>
+      <p class="lead" style="margin-top:16px">
+        Todo va a la Papelera. Si te arrepientes, está donde siempre.
+      </p>
+    </div>
+    <div>
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Escaneo al abrir</h3>
+        <p>El panel llega con los datos hechos. Sin botones que pulsar
+           ni esperas de treinta segundos mirando una rueda.</p>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <span class="dot" style="background:var(--yellow)"></span>
+        <h3>Listado detallado</h3>
+        <p>Antes de confirmar ves exactamente qué se va: rutas, tamaños y
+           número de archivos de cada categoría marcada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Funciones ───────────────────────────────────────────────────────── -->
+<section id="funciones">
+  <div class="wrap">
+    <p class="eyebrow">Qué hace</p>
+    <h2>Seis herramientas, un icono.</h2>
+    <p class="lead">Todo desde la barra de menús, sin abrir otra app.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Limpiador</h3>
+        <p>DerivedData, cachés de Xcode y Homebrew, logs, SwiftPM, npm y bun,
+           archivos de compilación y <code>node_modules</code> de tus proyectos.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--blue)"></span>
+        <h3>Auto&#8209;limpieza</h3>
+        <p>Diaria, cada tres días o semanal, solo de las categorías que marques.
+           Te enteras por el resumen, no por quedarte sin disco.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--yellow)"></span>
+        <h3>Simuladores</h3>
+        <p>Vía <code>simctl</code>, nunca borrando carpetas a mano. Detecta los
+           que no usas y los runtimes viejos, y siempre conserva el más nuevo.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--red)"></span>
+        <h3>Desinstalador</h3>
+        <p>Arrastrar a la Papelera deja preferencias, cachés y soporte por todo
+           <code>~/Library</code>. Aquí ves los restos y se van con la app.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Métricas y procesos</h3>
+        <p>CPU, memoria, disco y red en la propia barra. Y los procesos que más
+           consumen, con botón para terminarlos.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--blue)"></span>
+        <h3>Mantener despierto</h3>
+        <p>Para builds largos y CI local. El Mac no se duerme a mitad y no hace
+           falta tocar los ajustes de energía.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Precio ──────────────────────────────────────────────────────────── -->
+<section id="precio">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow">Precio</p>
+    <h2>Se paga una vez.</h2>
+    <p class="lead" style="margin-inline:auto">
+      Sin suscripción, sin cuenta, sin recordatorios cada año.
+    </p>
+
+    <div class="price-box">
+      <div class="price">5<sup> € + IVA</sup></div>
+      <p class="muted small" style="margin-top:8px">Licencia de por vida</p>
+      <ul>
+        <li>Todas las funciones, para siempre</li>
+        <li>Actualizaciones incluidas</li>
+        <li>Úsala en todos tus Macs</li>
+        <li>Sin conexión: la licencia se valida en tu Mac</li>
+        <li>14 días de prueba antes de pagar</li>
+      </ul>
+      <a class="btn btn-primary" style="width:100%;justify-content:center"
+         href="https://buy.stripe.com/TU-PAYMENT-LINK">Comprar licencia</a>
+      <p class="muted small" style="margin-top:14px">
+        Pago mediante Stripe. Recibes la clave por email al instante.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Lite ────────────────────────────────────────────────────────────── -->
+<section id="lite">
+  <div class="wrap split flip">
+    <div>
+      <div class="card">
+        <span class="dot" style="background:var(--muted)"></span>
+        <h3>DevToolbox Lite · gratis</h3>
+        <p>Monitor de CPU, memoria, disco y red con histórico y batería.
+           Analizador de carpetas con detector de archivos grandes olvidados
+           y de duplicados. Aviso cuando queda poco disco.</p>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">En la App Store</p>
+      <h2>Hay una versión gratuita.</h2>
+      <p class="lead">
+        Hace lo que el sandbox de Apple permite hacer. Limpiar DerivedData o
+        desinstalar apps queda fuera de su alcance por diseño del sistema, no
+        por capricho: por eso la completa se distribuye aparte.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Preguntas ───────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="wrap" style="max-width:760px">
+    <p class="eyebrow">Preguntas</p>
+    <h2>Lo que suelen preguntar.</h2>
+
+    <div style="margin-top:36px">
+      <details open>
+        <summary>¿Por qué no está en la App Store?</summary>
+        <p>Porque no cabría. Las apps de la App Store van en un sandbox que les
+           impide leer <code>~/Library</code>, ejecutar <code>simctl</code> o
+           tocar <code>/Applications</code>. La versión que subiéramos allí no
+           podría limpiar nada. Lo que sí cabe está publicado como DevToolbox Lite.</p>
+      </details>
+      <details>
+        <summary>¿Es seguro instalarla fuera de la App Store?</summary>
+        <p>Va firmada con Developer ID y notarizada por Apple, así que macOS la
+           abre sin advertencias. Cada actualización se descarga firmada y la app
+           la rechaza si la firma no cuadra.</p>
+      </details>
+      <details>
+        <summary>¿Qué borra exactamente?</summary>
+        <p>Solo lo que marques, y siempre a la Papelera. Antes de confirmar ves
+           el listado completo con rutas y tamaños. Los simuladores se eliminan
+           con <code>simctl</code>, que es la vía oficial: borrar sus carpetas a
+           mano deja Xcode inconsistente.</p>
+      </details>
+      <details>
+        <summary>¿La licencia sirve en varios Macs?</summary>
+        <p>Sí. Es tuya, no de una máquina, y se valida sin conexión.</p>
+      </details>
+      <details>
+        <summary>¿Y si no me convence?</summary>
+        <p>Tienes 14 días de prueba con todo desbloqueado antes de pagar, sin
+           tarjeta ni registro. Si aun así te arrepientes, escríbeme y te
+           devuelvo el dinero.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DevToolbox</span>
+    <nav>
+      <a href="https://github.com/jmhdevelop/devtoolbox-releases/releases">Versiones</a>
+      <a href="#faq">Soporte</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
