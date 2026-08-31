@@ -656,3 +656,30 @@ header .btn {
   border-radius: 99px;
   padding: 9px 22px;
 }
+
+
+/* ── Cabecera fija de verdad ──────────────────────────────────────────────
+   `sticky` depende de que ningún ancestro tenga overflow o transform; `fixed`
+   no depende de nada. El icono y el botón se quedan quietos siempre. */
+
+header {
+  position: fixed !important;
+  top: 0; left: 0; right: 0;
+}
+/* El contenido arranca por debajo de la cabecera, que ya no ocupa sitio. */
+body { padding-top: 78px; }
+
+header .wrap { height: 78px; }
+.logo img { width: 48px !important; height: 48px !important; }
+
+@media (max-width: 860px) {
+  body { padding-top: 66px; }
+  header .wrap { height: 66px; }
+  .logo img { width: 42px !important; height: 42px !important; }
+}
+
+@media (max-width: 420px) {
+  body { padding-top: 60px; }
+  header .wrap { height: 60px; }
+  .logo img { width: 38px !important; height: 38px !important; }
+}
