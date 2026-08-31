@@ -42,6 +42,11 @@ limitada a lo que el sandbox permite: monitor de sistema con histórico y
 batería, analizador de carpetas elegidas por el usuario con detección de
 archivos grandes y duplicados, y aviso de disco lleno.
 
+## Idiomas
+
+- Español: https://jmhdevelop.github.io/devtoolbox-releases/
+- English: https://jmhdevelop.github.io/devtoolbox-releases/en/
+
 ## Enlaces
 
 - Web: https://jmhdevelop.github.io/devtoolbox-releases/

@@ -442,3 +442,75 @@ h1 em {
 
 .btn-primary { box-shadow: 0 6px 22px rgba(255,255,255,.1); }
 summary:hover { color: #fff; }
+
+
+/* ── Navegación ───────────────────────────────────────────────────────── */
+
+.skip {
+  position: absolute; left: -9999px; top: 8px; z-index: 100;
+  background: var(--text); color: #0a0b0c; padding: 10px 18px; border-radius: 8px;
+}
+.skip:focus { left: 20px; }
+
+/* Progreso de lectura: barra finísima en el borde superior. */
+.progress {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 30;
+  width: 0; background: linear-gradient(90deg, var(--green), var(--blue));
+  transition: width .1s linear;
+}
+
+header nav a {
+  position: relative; padding: 6px 0;
+  transition: color .2s;
+}
+header nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+  background: var(--text); border-radius: 2px;
+  transform: scaleX(0); transform-origin: left; transition: transform .25s;
+}
+header nav a.active { color: var(--text); }
+header nav a.active::after { transform: scaleX(1); }
+
+.lang {
+  display: flex; gap: 1px; padding: 2px; margin-left: 4px;
+  background: rgba(255,255,255,.07); border-radius: 8px;
+}
+.lang a {
+  padding: 4px 9px; font-size: 12px; font-weight: 600;
+  color: var(--muted); border-radius: 6px;
+}
+.lang a.on { background: var(--surface-2); color: var(--text); }
+.lang a:hover { color: var(--text); }
+
+/* Vuelta arriba, aparece al bajar. */
+.top {
+  position: fixed; right: 22px; bottom: 22px; z-index: 25;
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 16px;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--muted);
+  opacity: 0; pointer-events: none; transform: translateY(10px);
+  transition: opacity .25s, transform .25s, color .2s;
+}
+.top.on { opacity: 1; pointer-events: auto; transform: none; }
+.top:hover { color: var(--text); }
+
+@media (max-width: 860px) {
+  /* En vez de esconder la navegación, se convierte en tiras deslizables. */
+  header nav {
+    display: flex; position: fixed; top: 52px; left: 0; right: 0; z-index: 9;
+    gap: 0; overflow-x: auto; scrollbar-width: none;
+    padding: 8px 16px; background: rgba(8,9,10,.9);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  header nav::-webkit-scrollbar { display: none; }
+  header nav a {
+    flex: none; padding: 6px 13px; font-size: 13px; white-space: nowrap;
+    border-radius: 99px;
+  }
+  header nav a::after { display: none; }
+  header nav a.active { background: rgba(255,255,255,.09); }
+  main { padding-top: 45px; }          /* hueco de la tira de navegación */
+  .top { display: none; }              /* la barra inferior ya ocupa esa esquina */
+  .lang a { padding: 5px 10px; }
+}

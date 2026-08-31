@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>DevToolbox — Clean and monitor your Mac from the menu bar</title>
+<meta name="description" content="A macOS menu bar utility that reclaims the gigabytes Xcode, iOS simulators, Homebrew and node_modules quietly eat up. It scans, shows you what each item weighs, and moves it to the Trash. €5, forever.">
+<link rel="canonical" href="https://jmhdevelop.github.io/devtoolbox-releases/en/">
+<link rel="alternate" hreflang="es" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<link rel="alternate" hreflang="en" href="https://jmhdevelop.github.io/devtoolbox-releases/en/">
+<link rel="alternate" hreflang="x-default" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<!-- Machine-readable alternates, for agents. -->
+<link rel="alternate" type="text/plain" href="https://jmhdevelop.github.io/devtoolbox-releases/llms.txt" title="LLM summary">
+<link rel="alternate" type="application/json" href="https://jmhdevelop.github.io/devtoolbox-releases/product.json" title="Machine-readable product">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="DevToolbox">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DevToolbox">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:url" content="https://jmhdevelop.github.io/devtoolbox-releases/en/">
+<meta property="og:title" content="DevToolbox — Clean and monitor your Mac from the menu bar">
+<meta property="og:description" content="DerivedData, unused simulators, caches and node_modules. It shows you what each one weighs before deleting anything. €5, forever.">
+<meta property="og:image" content="https://jmhdevelop.github.io/devtoolbox-releases/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DevToolbox: your Mac is hiding gigabytes you have never seen">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DevToolbox — Clean and monitor your Mac from the menu bar">
+<meta name="twitter:description" content="DerivedData, simulators, caches and node_modules. €5, forever.">
+<meta name="twitter:image" content="https://jmhdevelop.github.io/devtoolbox-releases/og.png">
+
+<meta name="theme-color" content="#08090a">
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Datos estructurados: es lo que leen tanto Google para los resultados
+     enriquecidos como los rastreadores de IA para citar con precisión. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://jmhdevelop.github.io/devtoolbox-releases/en/#app",
+      "name": "DevToolbox",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Cleanup and monitoring utility",
+      "operatingSystem": "macOS 14.0 or later",
+      "softwareVersion": "1.0",
+      "url": "https://jmhdevelop.github.io/devtoolbox-releases/en/",
+      "downloadUrl": "https://github.com/jmhdevelop/devtoolbox-releases/releases/latest",
+      "screenshot": "https://jmhdevelop.github.io/devtoolbox-releases/og.png",
+      "inLanguage": "en",
+      "description": "A macOS menu bar utility that finds and removes the junk left behind by development work: Xcode DerivedData, unused iOS simulators, iOS DeviceSupport, Homebrew, SwiftPM, npm and bun caches, and node_modules folders. It shows the size of every category before deleting and sends everything to the Trash. It also includes an app uninstaller that catches leftover files, CPU, memory, disk and network metrics in the menu bar, a process list, and a keep-awake mode.",
+      "featureList": [
+        "Cleans Xcode DerivedData and caches",
+        "Removes unused iOS simulators through simctl",
+        "Scheduled automatic cleaning",
+        "App uninstaller including leftovers in ~/Library",
+        "CPU, memory, disk and network metrics in the menu bar",
+        "List of the most demanding processes",
+        "Keeps the Mac awake during long builds"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "5.00",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://jmhdevelop.github.io/devtoolbox-releases/en/#pricing",
+        "description": "Perpetual licence, one single payment, updates included. VAT not included."
+      },
+      "softwareHelp": "https://jmhdevelop.github.io/devtoolbox-releases/en/#faq"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jmhdevelop.github.io/devtoolbox-releases/en/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is DevToolbox not on the Mac App Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because the App Store's mandatory sandbox prevents reading ~/Library, running simctl and modifying /Applications, which is exactly what it needs in order to clean. A sandboxed build could not delete DerivedData or uninstall applications. What does fit inside the sandbox ships separately as DevToolbox Lite, which is free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it safe to install DevToolbox outside the App Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The app is signed with a Developer ID and notarised by Apple, so macOS opens it without Gatekeeper warnings. Every update is downloaded with an EdDSA signature and the app rejects it if the signature does not match."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What exactly does DevToolbox delete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only the categories you tick, and always to the Trash. Before confirming it shows the complete list with paths and sizes. Simulators are removed with simctl, Apple's official route: deleting their folders by hand leaves Xcode in an inconsistent state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a DevToolbox licence work on several Macs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The licence belongs to the user rather than to a machine, and it is verified offline, so it can be used on all of your Macs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does DevToolbox cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Five euros plus VAT, as a single payment. The licence is perpetual and includes updates. There is a 14-day trial with every feature unlocked, with no card and no sign-up."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="progress" role="presentation"></div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="./">DevToolbox</a>
+    <nav aria-label="Secciones">
+      <a href="#funciones">Funciones</a>
+      <a href="#precio">Precio</a>
+      <a href="#lite">Lite</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="./" class="on" hreflang="es">ES</a>
+      <a href="en/" class="" hreflang="en">EN</a>
+    </div>
+    <a class="btn btn-primary btn-sm" href="#precio">Buy</a>
+  </div>
+</header>
+
+<!-- ── Portada ─────────────────────────────────────────────────────────── -->
+<div class="glow" aria-hidden="true"></div>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">macOS · menu bar</p>
+      <h1>Your Mac is hiding <em>gigabytes</em> you have never seen.</h1>
+      <p class="lead">
+        Caches, leftovers from apps you deleted, development environments and
+        temp folders that grow on their own. DevToolbox finds them, tells you
+        what they weigh, and clears them when you say so.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#precio">Buy for €5</a>
+        <a class="btn btn-ghost" href="https://github.com/jmhdevelop/devtoolbox-releases/releases/latest">Download and try it</a>
+      </div>
+      <p class="note" id="que-es"><strong>DevToolbox</strong> is a menu bar utility for macOS 14 and later that frees up space by removing the temporary files left behind by Xcode, iOS and Node.js development.<br>14-day trial, no card, no sign-up. macOS 14 or later.</p>
+    </div>
+
+    <!-- Simulador del panel: se toca, no es una captura. -->
+    <div class="panel" id="sim">
+      <div class="tiles">
+        <div class="tile">
+          <div class="label">Disco</div><div class="value" id="vDisk">91,7 GB</div>
+          <div class="cap">libres</div>
+          <div class="meter"><i id="bDisk" style="width:56%;background:var(--green)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">RAM</div><div class="value" id="vRam">10 GB</div>
+          <div class="cap">de 17,2 GB</div>
+          <div class="meter"><i id="bRam" style="width:58%;background:var(--yellow)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">CPU</div><div class="value" id="vCpu">38 %</div>
+          <div class="cap">en uso</div>
+          <div class="meter"><i id="bCpu" style="width:38%;background:var(--red)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">Red</div><div class="value" id="vNet">↓ 1,1M</div>
+          <div class="cap" id="vNetUp">↑ 10K</div>
+          <div class="meter"><i id="bNet" style="width:72%;background:var(--blue)"></i></div>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="on" data-tab="0">Cleaner</button>
+        <button data-tab="1">Apps</button>
+        <button data-tab="2">Processes</button>
+        <button data-tab="3">Settings</button>
+      </div>
+
+      <div class="pane on" data-pane="0">
+        <div class="rows" id="cleanRows"></div>
+        <button class="cta-row" id="cleanBtn">🗑 Limpiar <span id="cleanTotal">42,4 GB</span></button>
+        <p class="hint">Tick categories and hit clean.</p>
+      </div>
+
+      <div class="pane" data-pane="1">
+        <div class="rows" id="appRows"></div>
+        <p class="hint">It also takes what they leave in <code>~/Library</code>.</p>
+      </div>
+
+      <div class="pane" data-pane="2">
+        <div class="rows" id="procRows"></div>
+        <p class="hint">Refreshes itself while you watch.</p>
+      </div>
+
+      <div class="pane" data-pane="3">
+        <div class="rows" id="setRows"></div>
+        <p class="hint">The switches work too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ver antes de borrar ─────────────────────────────────────────────── -->
+<section class="reveal">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">No surprises</p>
+      <h2>It shows first, deletes second.</h2>
+      <p class="lead">
+        Nothing disappears without you seeing it first. It scans when you open
+        it, tells you what each category weighs and how many items are inside,
+        and only then offers the button.
+      </p>
+      <p class="lead" style="margin-top:16px">
+        Everything goes to the Trash. Change your mind and it is right there.
+      </p>
+    </div>
+    <div>
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Scans on open</h3>
+        <p>The panel arrives with the numbers already in. No button to press,
+           no thirty seconds watching a spinner.</p>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <span class="dot" style="background:var(--yellow)"></span>
+        <h3>Itemised list</h3>
+        <p>Before you confirm you see exactly what goes: paths, sizes and file
+           counts for every category you ticked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Funciones ───────────────────────────────────────────────────────── -->
+<section class="reveal" id="features">
+  <div class="wrap">
+    <p class="eyebrow">What it does</p>
+    <h2>Six tools, one icon.</h2>
+    <p class="lead">All from the menu bar, without opening another app.</p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Cleaner</h3>
+        <p>DerivedData, Xcode and Homebrew caches, logs, SwiftPM, npm and bun,
+           build artefacts and <code>node_modules</code> across your projects.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--blue)"></span>
+        <h3>Auto&#8209;clean</h3>
+        <p>Daily, every three days or weekly, only the categories you tick.
+           You find out from the summary, not from running out of disk.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--yellow)"></span>
+        <h3>Simulators</h3>
+        <p>Through <code>simctl</code>, never by deleting folders by hand. It spots
+           the ones you never boot and old runtimes, always keeping the newest.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--red)"></span>
+        <h3>Uninstaller</h3>
+        <p>Dragging to the Trash leaves preferences, caches and support files all
+           over <code>~/Library</code>. Here you see the leftovers and they go too.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--green)"></span>
+        <h3>Metrics and processes</h3>
+        <p>CPU, memory, disk and network right in the bar. Plus the hungriest
+           processes, with a button to end them.</p>
+      </div>
+      <div class="card">
+        <span class="dot" style="background:var(--blue)"></span>
+        <h3>Keep awake</h3>
+        <p>For long builds and local CI. Your Mac will not doze off halfway and you
+           never touch the energy settings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Precio ──────────────────────────────────────────────────────────── -->
+<section class="reveal" id="pricing">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow">Pricing</p>
+    <h2>You pay once.</h2>
+    <p class="lead" style="margin-inline:auto">
+      No subscription, no account, no yearly reminder.
+    </p>
+
+    <div class="price-box">
+      <div class="price">5<sup>€ + VAT</sup></div>
+      <p class="muted small" style="margin-top:8px">Lifetime licence</p>
+      <ul>
+        <li>Every feature, forever</li>
+        <li>Updates included</li>
+        <li>Use it on all your Macs</li>
+        <li>Offline: the licence is verified on your Mac</li>
+        <li>14-day trial before you pay</li>
+      </ul>
+      <a class="btn btn-primary" style="width:100%;justify-content:center"
+         href="https://buy.stripe.com/TU-PAYMENT-LINK">Buy a licence</a>
+      <p class="muted small" style="margin-top:14px">
+        Paid through Stripe. Your key arrives by email straight away.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Lite ────────────────────────────────────────────────────────────── -->
+<section class="reveal" id="lite">
+  <div class="wrap split flip">
+    <div>
+      <div class="card">
+        <span class="dot" style="background:var(--muted)"></span>
+        <h3>DevToolbox Lite · free</h3>
+        <p>CPU, memory, disk and network monitoring with history and battery.
+           A folder analyser that finds large forgotten files and duplicates.
+           A warning when disk space runs low.</p>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">On the App Store</p>
+      <h2>There is a free version.</h2>
+      <p class="lead">
+        It does what Apple's sandbox allows. Cleaning DerivedData or uninstalling
+        apps is out of its reach by system design, not by choice, which is why
+        the full version ships separately.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Preguntas ───────────────────────────────────────────────────────── -->
+<section class="reveal" id="faq">
+  <div class="wrap" style="max-width:760px">
+    <p class="eyebrow">Questions</p>
+    <h2>What people usually ask.</h2>
+
+    <div style="margin-top:36px">
+      <details open>
+        <summary>Why is it not on the App Store?</summary>
+        <p>Because it would not fit. App Store apps run in a sandbox that stops them
+           reading <code>~/Library</code>, running <code>simctl</code> or touching
+           <code>/Applications</code>. Whatever we shipped there could not clean
+           anything. What does fit is published as DevToolbox Lite.</p>
+      </details>
+      <details>
+        <summary>Is it safe to install outside the App Store?</summary>
+        <p>It is signed with a Developer ID and notarised by Apple, so macOS opens it
+           without warnings. Every update downloads signed, and the app refuses it
+           if the signature does not match.</p>
+      </details>
+      <details>
+        <summary>What exactly does it delete?</summary>
+        <p>Only what you tick, and always to the Trash. Before confirming you see the
+           full list with paths and sizes. Simulators are removed with
+           <code>simctl</code>, the official route: deleting their folders by hand
+           leaves Xcode inconsistent.</p>
+      </details>
+      <details>
+        <summary>Does the licence work on several Macs?</summary>
+        <p>Yes. It belongs to you, not to a machine, and it is verified offline.</p>
+      </details>
+      <details>
+        <summary>What if I do not like it?</summary>
+        <p>You get 14 days with everything unlocked before paying, no card and no
+           sign-up. If you still regret it, write to me and I will refund you.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<button class="top" aria-label="Back to top">↑</button>
+
+<div class="mobile-bar">
+  <div>
+    <strong>€5 + VAT</strong>
+    <span>lifetime licence</span>
+  </div>
+  <a class="btn btn-primary btn-sm" href="#precio">Buy</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 DevToolbox</span>
+    <nav>
+      <a href="https://github.com/jmhdevelop/devtoolbox-releases/releases">Releases</a>
+      <a href="#faq">Support</a>
+    </nav>
+  </div>
+</footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>

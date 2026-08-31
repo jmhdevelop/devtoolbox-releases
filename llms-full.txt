@@ -1,0 +1,82 @@
+# DevToolbox — documentación completa
+
+> Utilidad de barra de menús para macOS que libera espacio eliminando archivos
+> temporales de desarrollo y muestra el estado del sistema.
+
+Idiomas: español (https://jmhdevelop.github.io/devtoolbox-releases/), inglés (https://jmhdevelop.github.io/devtoolbox-releases/en/)
+Acciones legibles por máquina: https://jmhdevelop.github.io/devtoolbox-releases/product.json
+
+## Definición
+
+DevToolbox es una aplicación nativa para macOS 14 o superior, escrita en Swift
+y SwiftUI, que reside en la barra de menús. No abre ventanas: todo ocurre en un
+panel desplegable de 460 puntos de ancho.
+
+## Qué limpia, con rutas exactas
+
+| Categoría | Ruta | Se regenera |
+| --- | --- | --- |
+| DerivedData | ~/Library/Developer/Xcode/DerivedData | Sí, al compilar |
+| Cachés de usuario | ~/Library/Caches | Sí |
+| Logs | ~/Library/Logs | Sí |
+| Cachés de simulador | ~/Library/Developer/CoreSimulator/Caches | Sí |
+| iOS DeviceSupport | ~/Library/Developer/Xcode/iOS DeviceSupport | Sí, al conectar el dispositivo |
+| Archivos de Xcode | ~/Library/Developer/Xcode/Archives | No, son builds firmadas |
+| Copias de iOS | ~/Library/Application Support/MobileSync/Backup | No |
+| SwiftPM | ~/Library/org.swift.swiftpm | Sí, al resolver paquetes |
+| Cachés npm y bun | ~/.npm/_cacache y equivalentes | Sí, al instalar |
+| node_modules | Bajo ~/Projects, hasta 4 niveles | Sí, con npm install |
+| Simuladores | Vía simctl, nunca borrando carpetas | No |
+
+Los simuladores y runtimes se eliminan mediante `simctl`, la herramienta oficial
+de Apple. Borrar sus carpetas a mano deja Xcode en estado inconsistente. Siempre
+se conserva el runtime más reciente.
+
+## Otras funciones
+
+- Auto-limpieza programable: diaria, cada tres días o semanal, solo de las
+  categorías marcadas.
+- Desinstalador: elimina una app junto con preferencias, cachés y archivos de
+  soporte repartidos por ~/Library, que arrastrar a la Papelera deja atrás.
+- Métricas en la barra de menús: CPU, memoria, disco libre y velocidad de red,
+  configurables una a una.
+- Procesos: los que más consumen, con opción de terminarlos con SIGTERM.
+- Mantener despierto: assertion de energía para compilaciones largas.
+
+## Seguridad del borrado
+
+Todo va a la Papelera de forma predeterminada. Antes de confirmar se muestra el
+listado completo con rutas y tamaños. Existe un modo de borrado definitivo,
+desactivado por omisión, que elimina sin pasar por la Papelera para liberar el
+espacio al instante.
+
+## Precio y licencia
+
+5 EUR más IVA, pago único, licencia perpetua con actualizaciones incluidas.
+Prueba de 14 días con todas las funciones, sin tarjeta ni registro. La licencia
+es una cadena firmada con Ed25519 que se verifica localmente: no hay servidor de
+validación, funciona sin conexión y sirve en todos los Macs del comprador.
+
+El cobro se procesa mediante Stripe Managed Payments, que actúa como vendedor
+registrado y liquida los impuestos correspondientes a cada país.
+
+## Distribución y actualizaciones
+
+Se distribuye fuera de la Mac App Store, firmada con Developer ID y notarizada
+por Apple, de modo que macOS la abre sin advertencias. Las actualizaciones usan
+Sparkle contra un feed público; cada versión va firmada con EdDSA y la app
+rechaza cualquier descarga cuya firma no coincida.
+
+## Por qué no está en la Mac App Store
+
+El sandbox obligatorio de la App Store impide leer ~/Library, ejecutar procesos
+externos como simctl y modificar /Applications. Una versión sandboxed no podría
+limpiar DerivedData ni desinstalar aplicaciones. No es una decisión comercial.
+
+## DevToolbox Lite
+
+Versión gratuita publicada en la Mac App Store, limitada a lo que el sandbox
+permite: monitor de CPU, memoria, disco y red con histórico de tres minutos,
+estado de la batería, listado de volúmenes, analizador de carpetas que el
+usuario autoriza expresamente, detección de archivos grandes sin abrir y de
+duplicados por hash, y aviso por notificación cuando queda poco disco.

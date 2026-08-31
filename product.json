@@ -1,0 +1,114 @@
+{
+  "$schema": "https://schema.org/SoftwareApplication",
+  "name": "DevToolbox",
+  "tagline": "Limpia y vigila tu Mac desde la barra de menús",
+  "version": "1.0",
+  "platform": {
+    "os": "macOS",
+    "minimumVersion": "14.0",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ]
+  },
+  "languages": [
+    "es",
+    "en"
+  ],
+  "canonical": "https://jmhdevelop.github.io/devtoolbox-releases/",
+  "documentation": {
+    "human": "https://jmhdevelop.github.io/devtoolbox-releases/",
+    "llm": "https://jmhdevelop.github.io/devtoolbox-releases/llms.txt",
+    "full": "https://jmhdevelop.github.io/devtoolbox-releases/llms-full.txt"
+  },
+  "pricing": {
+    "model": "one-time",
+    "amount": 5.0,
+    "currency": "EUR",
+    "taxIncluded": false,
+    "perpetual": true,
+    "includesUpdates": true,
+    "trial": {
+      "days": 14,
+      "cardRequired": false,
+      "accountRequired": false
+    }
+  },
+  "editions": [
+    {
+      "id": "pro",
+      "name": "DevToolbox",
+      "price": 5.0,
+      "distribution": "direct",
+      "sandboxed": false,
+      "capabilities": [
+        "clean-derived-data",
+        "clean-xcode-caches",
+        "delete-unused-simulators",
+        "uninstall-apps-with-leftovers",
+        "list-and-kill-processes",
+        "menu-bar-metrics",
+        "scheduled-auto-clean",
+        "keep-awake"
+      ]
+    },
+    {
+      "id": "lite",
+      "name": "DevToolbox Lite",
+      "price": 0,
+      "distribution": "mac-app-store",
+      "sandboxed": true,
+      "capabilities": [
+        "menu-bar-metrics",
+        "metric-history",
+        "battery-status",
+        "analyze-user-selected-folders",
+        "find-large-old-files",
+        "find-duplicates",
+        "low-disk-notification"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "download-trial",
+      "type": "DownloadAction",
+      "description": "Descargar la última versión y probarla 14 días sin pagar.",
+      "url": "https://github.com/jmhdevelop/devtoolbox-releases/releases/latest",
+      "method": "GET",
+      "requiresAuth": false
+    },
+    {
+      "id": "buy-license",
+      "type": "BuyAction",
+      "description": "Comprar una licencia perpetua. Devuelve una clave por email.",
+      "url": "https://buy.stripe.com/TU-PAYMENT-LINK",
+      "method": "GET",
+      "requiresAuth": false,
+      "price": {
+        "amount": 5.0,
+        "currency": "EUR",
+        "taxIncluded": false
+      }
+    },
+    {
+      "id": "read-faq",
+      "type": "ReadAction",
+      "description": "Preguntas frecuentes en datos estructurados.",
+      "url": "https://jmhdevelop.github.io/devtoolbox-releases/#faq",
+      "method": "GET",
+      "requiresAuth": false
+    }
+  ],
+  "sections": {
+    "features": "https://jmhdevelop.github.io/devtoolbox-releases/#funciones",
+    "pricing": "https://jmhdevelop.github.io/devtoolbox-releases/#precio",
+    "free-edition": "https://jmhdevelop.github.io/devtoolbox-releases/#lite",
+    "faq": "https://jmhdevelop.github.io/devtoolbox-releases/#faq"
+  },
+  "notes": [
+    "No está en la Mac App Store porque el sandbox obligatorio impide leer ~/Library, ejecutar simctl y modificar /Applications.",
+    "La licencia se valida sin conexión y es del usuario, no de la máquina.",
+    "Todo lo que borra va a la Papelera salvo que se active el borrado definitivo."
+  ]
+}

@@ -7,6 +7,12 @@
 <title>DevToolbox — Limpia y vigila tu Mac desde la barra de menús</title>
 <meta name="description" content="Utilidad de barra de menús para macOS que libera los gigas que Xcode, los simuladores de iOS, Homebrew y node_modules ocupan sin avisar. Escanea, te enseña cuánto pesa cada cosa y borra a la Papelera. 5 € de por vida.">
 <link rel="canonical" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<link rel="alternate" hreflang="es" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<link rel="alternate" hreflang="en" href="https://jmhdevelop.github.io/devtoolbox-releases/en/">
+<link rel="alternate" hreflang="x-default" href="https://jmhdevelop.github.io/devtoolbox-releases/">
+<!-- Alternativas legibles por máquina, para agentes. -->
+<link rel="alternate" type="text/plain" href="https://jmhdevelop.github.io/devtoolbox-releases/llms.txt" title="LLM summary">
+<link rel="alternate" type="application/json" href="https://jmhdevelop.github.io/devtoolbox-releases/product.json" title="Machine-readable product">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="DevToolbox">
 
@@ -119,22 +125,29 @@
 </head>
 <body>
 
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="progress" role="presentation"></div>
+
 <header>
   <div class="wrap">
-    <span class="logo">DevToolbox</span>
-    <nav>
+    <a class="logo" href="./">DevToolbox</a>
+    <nav aria-label="Secciones">
       <a href="#funciones">Funciones</a>
       <a href="#precio">Precio</a>
       <a href="#lite">Lite</a>
       <a href="#faq">Preguntas</a>
     </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <a href="./" class="on" hreflang="es">ES</a>
+      <a href="en/" class="" hreflang="en">EN</a>
+    </div>
     <a class="btn btn-primary btn-sm" href="#precio">Comprar</a>
   </div>
 </header>
 
 <!-- ── Portada ─────────────────────────────────────────────────────────── -->
 <div class="glow" aria-hidden="true"></div>
-<main>
+<main id="main">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -382,6 +395,8 @@
 </section>
 
 </main>
+
+<button class="top" aria-label="Volver arriba">↑</button>
 
 <div class="mobile-bar">
   <div>
