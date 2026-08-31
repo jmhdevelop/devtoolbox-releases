@@ -15,11 +15,11 @@
     "es",
     "en"
   ],
-  "canonical": "https://jmhdevelop.github.io/devtoolbox-releases/",
+  "canonical": "https://devtoolbox.softapp.tech/",
   "documentation": {
-    "human": "https://jmhdevelop.github.io/devtoolbox-releases/",
-    "llm": "https://jmhdevelop.github.io/devtoolbox-releases/llms.txt",
-    "full": "https://jmhdevelop.github.io/devtoolbox-releases/llms-full.txt"
+    "human": "https://devtoolbox.softapp.tech/",
+    "llm": "https://devtoolbox.softapp.tech/llms.txt",
+    "full": "https://devtoolbox.softapp.tech/llms-full.txt"
   },
   "pricing": {
     "model": "one-time",
@@ -95,16 +95,16 @@
       "id": "read-faq",
       "type": "ReadAction",
       "description": "Preguntas frecuentes en datos estructurados.",
-      "url": "https://jmhdevelop.github.io/devtoolbox-releases/#faq",
+      "url": "https://devtoolbox.softapp.tech/#faq",
       "method": "GET",
       "requiresAuth": false
     }
   ],
   "sections": {
-    "features": "https://jmhdevelop.github.io/devtoolbox-releases/#funciones",
-    "pricing": "https://jmhdevelop.github.io/devtoolbox-releases/#precio",
-    "free-edition": "https://jmhdevelop.github.io/devtoolbox-releases/#lite",
-    "faq": "https://jmhdevelop.github.io/devtoolbox-releases/#faq"
+    "features": "https://devtoolbox.softapp.tech/#funciones",
+    "pricing": "https://devtoolbox.softapp.tech/#precio",
+    "free-edition": "https://devtoolbox.softapp.tech/#lite",
+    "faq": "https://devtoolbox.softapp.tech/#faq"
   },
   "notes": [
     "No está en la Mac App Store porque el sandbox obligatorio impide leer ~/Library, ejecutar simctl y modificar /Applications.",

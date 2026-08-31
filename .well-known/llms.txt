@@ -1,4 +1,4 @@
 # DevToolbox
 
-Descriptor completo: https://jmhdevelop.github.io/devtoolbox-releases/llms.txt
-Acciones legibles por máquina: https://jmhdevelop.github.io/devtoolbox-releases/product.json
+Descriptor completo: https://devtoolbox.softapp.tech/llms.txt
+Acciones legibles por máquina: https://devtoolbox.softapp.tech/product.json

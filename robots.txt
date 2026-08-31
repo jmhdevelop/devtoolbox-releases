@@ -23,4 +23,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://jmhdevelop.github.io/devtoolbox-releases/sitemap.xml
+Sitemap: https://devtoolbox.softapp.tech/sitemap.xml

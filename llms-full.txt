@@ -3,8 +3,8 @@
 > Utilidad de barra de menús para macOS que libera espacio eliminando archivos
 > temporales de desarrollo y muestra el estado del sistema.
 
-Idiomas: español (https://jmhdevelop.github.io/devtoolbox-releases/), inglés (https://jmhdevelop.github.io/devtoolbox-releases/en/)
-Acciones legibles por máquina: https://jmhdevelop.github.io/devtoolbox-releases/product.json
+Idiomas: español (https://devtoolbox.softapp.tech/), inglés (https://devtoolbox.softapp.tech/en/)
+Acciones legibles por máquina: https://devtoolbox.softapp.tech/product.json
 
 ## Definición
 

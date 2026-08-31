@@ -44,10 +44,10 @@ archivos grandes y duplicados, y aviso de disco lleno.
 
 ## Idiomas
 
-- Español: https://jmhdevelop.github.io/devtoolbox-releases/
-- English: https://jmhdevelop.github.io/devtoolbox-releases/en/
+- Español: https://devtoolbox.softapp.tech/
+- English: https://devtoolbox.softapp.tech/en/
 
 ## Enlaces
 
-- Web: https://jmhdevelop.github.io/devtoolbox-releases/
+- Web: https://devtoolbox.softapp.tech/
 - Descargas: https://github.com/jmhdevelop/devtoolbox-releases/releases

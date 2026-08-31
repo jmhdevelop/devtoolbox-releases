@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jmhdevelop.github.io/devtoolbox-releases/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://jmhdevelop.github.io/devtoolbox-releases/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jmhdevelop.github.io/devtoolbox-releases/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://jmhdevelop.github.io/devtoolbox-releases/en/"/>
+    <loc>https://devtoolbox.softapp.tech/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://devtoolbox.softapp.tech/en/"/>
     <lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jmhdevelop.github.io/devtoolbox-releases/en/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://jmhdevelop.github.io/devtoolbox-releases/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jmhdevelop.github.io/devtoolbox-releases/en/"/>
+    <loc>https://devtoolbox.softapp.tech/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/"/>
     <lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
 </urlset>
