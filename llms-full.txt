@@ -52,7 +52,7 @@ espacio al instante.
 
 ## Precio y licencia
 
-5 EUR más IVA, pago único, licencia perpetua con actualizaciones incluidas.
+5 EUR más impuestos, pago único (el impuesto aplicable depende del país del comprador), licencia perpetua con actualizaciones incluidas.
 Prueba de 14 días con todas las funciones, sin tarjeta ni registro. La licencia
 es una cadena firmada con Ed25519 que se verifica localmente: no hay servidor de
 validación, funciona sin conexión y sirve en todos los Macs del comprador.
