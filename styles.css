@@ -188,26 +188,14 @@ footer a:hover { color: var(--text); }
 
 /* ── Interacción ──────────────────────────────────────────────────────── */
 
-.tabs button {
-  padding: 5px 14px; font: inherit; font-size: 11px; font-weight: 500;
-  color: var(--muted); background: none; border: 0; border-radius: 7px;
-  cursor: pointer; transition: background .18s, color .18s;
+.tabs span {
+  display: inline-flex; align-items: center;
+  padding: 5px 13px; font-size: 11px; font-weight: 500;
+  color: var(--sec); border-radius: 7px;
 }
-.tabs button.on { background: var(--surface-2); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.35); }
-.tabs button:hover { color: var(--text); }
 
-.pane { display: none; }
-.pane.on { display: block; animation: slide .28s ease; }
-@keyframes slide { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: none; } }
 
-button.row {
-  width: 100%; font: inherit; text-align: left; background: none;
-  border: 0; border-bottom: 1px solid #212528; cursor: pointer;
-  transition: background .15s, opacity .3s, transform .3s;
-}
-button.row:hover { background: #1e2225; }
 .row .txt { flex: 1; }
-.row.gone { opacity: 0; transform: translateX(-14px); }
 .row .ico { font-size: 14px; }
 .row .size.ram { min-width: 62px; text-align: right; color: var(--muted); font-weight: 500; }
 .row .check { transition: background .15s, border-color .15s; }
@@ -228,9 +216,6 @@ button.row:hover { background: #1e2225; }
   width: 100%; font: inherit; font-size: 12px; font-weight: 600;
   color: var(--text); cursor: pointer; transition: background .18s, color .18s;
 }
-.cta-row:hover:not(:disabled) { background: #2a2f34; }
-.cta-row:disabled { opacity: .4; cursor: default; }
-.cta-row.done { background: rgba(50,215,75,.16); border-color: rgba(50,215,75,.4); color: var(--green); }
 
 .hint { font-size: 11px; color: var(--faint); text-align: center; margin-top: 9px; }
 
@@ -294,17 +279,14 @@ button.row:hover { background: #1e2225; }
 
   /* Pestañas a lo ancho, con altura de dedo. */
   .tabs { width: 100%; margin: 12px 0 10px; }
-  .tabs button { flex: 1; padding: 9px 4px; font-size: 11.5px; min-height: 38px; }
+  .tabs span { flex: 1; justify-content: center; padding: 9px 4px; font-size: 11.5px; }
 
   .row { padding: 12px; gap: 12px; min-height: 52px; }
   .row .name { font-size: 13px; }
   .row .sub { font-size: 10.5px; }
   .row .size { font-size: 12px; }
   .row .check { width: 18px; height: 18px; }
-  .cta-row { padding: 14px; font-size: 13.5px; min-height: 48px; }
-  .sw { width: 32px; height: 19px; }
-  .sw::after { width: 15px; height: 15px; }
-  .sw.on::after { transform: translateX(13px); }
+  .cta-row { padding: 13px; font-size: 13px; }
 
   /* Precio: la tarjeta ocupa el ancho y el botón es del tamaño del pulgar. */
   .price-box { padding: 28px 22px; border-radius: 16px; margin-top: 28px; }
@@ -337,7 +319,7 @@ button.row:hover { background: #1e2225; }
   h1 { font-size: 2rem; }
   .tile .value { font-size: 15.5px; }
   .tile .label { font-size: 8.5px; }
-  .tabs button { font-size: 10.5px; padding: 9px 2px; }
+  .tabs span { font-size: 10.5px; padding: 9px 2px; }
   .row .sub { display: none; }        /* en 375 px el subtítulo solo estorba */
   .price { font-size: 46px; }
 }
@@ -366,7 +348,7 @@ button.row:hover { background: #1e2225; }
 
 /* Carril hundido y pastilla elevada, como el selector de la app. */
 .tabs { background: rgba(255,255,255,.07); padding: 2px; border-radius: 9px; }
-.tabs button.on {
+.tabs span.on {
   background: linear-gradient(180deg, #2a2e33 0%, #232729 100%);
   border: .5px solid rgba(255,255,255,.14);
   box-shadow: 0 2px 5px rgba(0,0,0,.35);
@@ -388,7 +370,6 @@ button.row:hover { background: #1e2225; }
   border-width: 0 1.6px 1.6px 0; transform: rotate(42deg) translate(-1px,-1px);
 }
 /* La selección se señala una vez, no tres. */
-button.row:has(.check.on) { background: rgba(255,255,255,.055); }
 
 /* El botón es del mismo material que las pestañas, sin azul de sistema. */
 .cta-row {
@@ -525,11 +506,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   outline-offset: 3px;
   border-radius: 6px;
 }
-.row:focus-visible { outline-offset: -2px; }
 
 /* El estado de las casillas y los interruptores se anuncia por ARIA, pero
    también tiene que verse sin depender solo del color. */
-button.row[aria-checked="true"] .check { background: var(--text); border-color: var(--text); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -553,15 +532,17 @@ button.row[aria-checked="true"] .check { background: var(--text); border-color: 
 .panel .tile .label { color: var(--sec); }
 .panel .tile .cap   { color: var(--ter); }
 .panel .row .sub    { color: var(--ter); }
-.panel .tabs button { color: var(--sec); }
-.panel .tabs button.on { color: var(--text); }
+.panel .tabs span.on { color: var(--text); }
 .panel .meter { background: var(--qua); }
 .panel .hint { color: var(--ter); }
+
+.row.sel { background: rgba(255,255,255,.055); }
+.cta-row { display: flex; align-items: center; justify-content: center; gap: 7px; }
 
 /* Icono gris de la fila, como el símbolo SF de la app. */
 .row .glyph { width: 18px; height: 18px; color: var(--sec); flex: none; }
 .row .glyph svg { width: 100%; height: 100%; display: block; }
-.tabs button svg { width: 11px; height: 11px; margin-right: 5px; vertical-align: -1px; }
+.tabs span svg { width: 11px; height: 11px; margin-right: 5px; vertical-align: -1px; }
 
 /* Contador de elementos: cápsula pequeña a la izquierda del tamaño. */
 .row .count {
