@@ -18,8 +18,8 @@ let cats = CATEGORIES.map((c) => ({ ...c }));
 
 function renderClean() {
   $('#cleanRows').innerHTML = cats.map((c, i) => `
-    <button class="row" data-cat="${i}">
-      <span class="check ${c.on ? 'on' : ''}"></span>
+    <button class="row" data-cat="${i}" role="checkbox" aria-checked="${c.on}">
+      <span class="check ${c.on ? 'on' : ''}" aria-hidden="true"></span>
       <span class="txt"><span class="name">${c.name}</span><br><span class="sub">${c.sub}</span></span>
       <span class="size">${gb(c.size)}</span>
     </button>`).join('');
@@ -113,19 +113,48 @@ document.querySelectorAll('.sw-row').forEach((el) =>
 
 /* ── Pestañas ──────────────────────────────────────────────────────────── */
 
-document.querySelectorAll('[data-tab]').forEach((btn) =>
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-tab]').forEach((b) => b.classList.remove('on'));
-    btn.classList.add('on');
-    document.querySelectorAll('[data-pane]').forEach((p) =>
-      p.classList.toggle('on', p.dataset.pane === btn.dataset.tab));
-    if (btn.dataset.tab === '2') renderProcs();
-  }));
+const tabs = [...document.querySelectorAll('[data-tab]')];
+
+function selectTab(btn) {
+  tabs.forEach((b) => {
+    const on = b === btn;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-selected', String(on));
+    b.tabIndex = on ? 0 : -1;
+  });
+  document.querySelectorAll('[data-pane]').forEach((p) =>
+    p.classList.toggle('on', p.dataset.pane === btn.dataset.tab));
+  if (btn.dataset.tab === '2') renderProcs();
+}
+
+tabs.forEach((btn, i) => {
+  btn.tabIndex = btn.classList.contains('on') ? 0 : -1;
+  btn.addEventListener('click', () => selectTab(btn));
+  // Flechas entre pestañas: es lo que espera quien navega con teclado.
+  btn.addEventListener('keydown', (e) => {
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    const next = tabs[(i + step + tabs.length) % tabs.length];
+    selectTab(next);
+    next.focus();
+  });
+});
 
 /* ── Métricas vivas ────────────────────────────────────────────────────── */
 
 let cpu = 38, ram = 10;
+
+/* El panel solo late si está en pantalla y la pestaña está en primer plano.
+   Si no, son repintados constantes que gastan batería y penalizan el INP. */
+let panelVisible = true;
+new IntersectionObserver(([e]) => { panelVisible = e.isIntersecting; })
+  .observe(document.getElementById('sim'));
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 setInterval(() => {
+  if (!panelVisible || document.hidden || reduced) return;
   cpu = Math.min(96, Math.max(4, cpu + (Math.random() - 0.5) * 22));
   ram = Math.min(16.4, Math.max(7, ram + (Math.random() - 0.5) * 0.8));
   const down = Math.random() * 2.4;

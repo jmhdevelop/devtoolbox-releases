@@ -5,8 +5,8 @@
   --surface-2: #1b1e21;
   --line: #262a2e;
   --text: #f3f5f6;
-  --muted: #8b9298;
-  --faint: #5c6469;
+  --muted: #a2a9ae;   /* 6.0:1 en el peor fondo */
+  --faint: #949ba1;   /* 5.34:1 sobre la baldosa más clara: WCAG AA */
   --green: #32d74b;
   --yellow: #ffd60a;
   --red: #ff453a;
@@ -513,4 +513,27 @@ header nav a.active::after { transform: scaleX(1); }
   main { padding-top: 45px; }          /* hueco de la tira de navegación */
   .top { display: none; }              /* la barra inferior ya ocupa esa esquina */
   .lang a { padding: 5px 10px; }
+}
+
+
+/* ── Accesibilidad ────────────────────────────────────────────────────── */
+
+/* Foco visible en todo lo interactivo. Sin esto no se puede navegar con
+   teclado, y Lighthouse lo marca. */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.row:focus-visible { outline-offset: -2px; }
+
+/* El estado de las casillas y los interruptores se anuncia por ARIA, pero
+   también tiene que verse sin depender solo del color. */
+button.row[aria-checked="true"] .check { background: var(--text); border-color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pane.on { animation: none; }
+  .progress { transition: none; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

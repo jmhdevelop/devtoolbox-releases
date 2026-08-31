@@ -34,6 +34,7 @@
 <meta name="twitter:image" content="https://jmhdevelop.github.io/devtoolbox-releases/og.png">
 
 <meta name="theme-color" content="#08090a">
+<link rel="preload" href="../styles.css" as="style">
 <link rel="stylesheet" href="../styles.css">
 
 <!-- Datos estructurados: es lo que leen tanto Google para los resultados
@@ -139,8 +140,8 @@
       <a href="#faq">Preguntas</a>
     </nav>
     <div class="lang" role="group" aria-label="Idioma">
-      <a href="./" class="on" hreflang="es">ES</a>
-      <a href="en/" class="" hreflang="en">EN</a>
+      <a href="./" class="on" hreflang="es" lang="es" aria-label="Español">ES</a>
+      <a href="en/" class="" hreflang="en" lang="en" aria-label="English">EN</a>
     </div>
     <a class="btn btn-primary btn-sm" href="#precio">Buy</a>
   </div>
@@ -191,30 +192,30 @@
         </div>
       </div>
 
-      <div class="tabs" role="tablist">
-        <button class="on" data-tab="0">Cleaner</button>
-        <button data-tab="1">Apps</button>
-        <button data-tab="2">Processes</button>
-        <button data-tab="3">Settings</button>
+      <div class="tabs" role="tablist" aria-label="Panel sections">
+        <button class="on" role="tab" aria-selected="true" aria-controls="pane0" id="tab0" data-tab="0">Cleaner</button>
+        <button role="tab" aria-selected="false" aria-controls="pane1" id="tab1" data-tab="1">Apps</button>
+        <button role="tab" aria-selected="false" aria-controls="pane2" id="tab2" data-tab="2">Processes</button>
+        <button role="tab" aria-selected="false" aria-controls="pane3" id="tab3" data-tab="3">Settings</button>
       </div>
 
-      <div class="pane on" data-pane="0">
+      <div class="pane on" role="tabpanel" id="pane0" aria-labelledby="tab0" data-pane="0">
         <div class="rows" id="cleanRows"></div>
         <button class="cta-row" id="cleanBtn">🗑 Limpiar <span id="cleanTotal">42,4 GB</span></button>
         <p class="hint">Tick categories and hit clean.</p>
       </div>
 
-      <div class="pane" data-pane="1">
+      <div class="pane" role="tabpanel" id="pane1" aria-labelledby="tab1" tabindex="0" data-pane="1">
         <div class="rows" id="appRows"></div>
         <p class="hint">It also takes what they leave in <code>~/Library</code>.</p>
       </div>
 
-      <div class="pane" data-pane="2">
+      <div class="pane" role="tabpanel" id="pane2" aria-labelledby="tab2" tabindex="0" data-pane="2">
         <div class="rows" id="procRows"></div>
         <p class="hint">Refreshes itself while you watch.</p>
       </div>
 
-      <div class="pane" data-pane="3">
+      <div class="pane" role="tabpanel" id="pane3" aria-labelledby="tab3" tabindex="0" data-pane="3">
         <div class="rows" id="setRows"></div>
         <p class="hint">The switches work too.</p>
       </div>
@@ -398,7 +399,7 @@
 
 <button class="top" aria-label="Back to top">↑</button>
 
-<div class="mobile-bar">
+<div class="mobile-bar" role="complementary" aria-label="Buy">
   <div>
     <strong>€5 + VAT</strong>
     <span>lifetime licence</span>
