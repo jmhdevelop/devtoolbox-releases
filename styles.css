@@ -603,3 +603,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #8b9298; }
   a[href^="#"]::after { content: ""; }
 }
+
+
+/* ── Captura de la app ────────────────────────────────────────────────────
+   Es una captura real, tomada sobre fondo liso para que el material
+   translúcido del panel no arrastre el escritorio. La sombra la pone el CSS,
+   así se adapta al fondo de la página. */
+
+.shot {
+  width: 100%; max-width: 440px; height: auto; display: block;
+  border-radius: 14px;
+  filter: drop-shadow(0 34px 70px rgba(0,0,0,.62));
+}
+
+@media (max-width: 860px) {
+  .shot { margin: 0 auto; max-width: 380px; }
+}
