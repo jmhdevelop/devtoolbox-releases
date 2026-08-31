@@ -799,3 +799,20 @@ details[open] { background: rgba(255,255,255,.035); }
 .btn { border-radius: 99px; }
 .hero .actions .btn { min-height: 50px; }
 .price-box .btn { border-radius: 99px; }
+
+
+/* ── Los dos botones de la portada, en fila también en móvil ──────────────
+   El principal se lleva más ancho porque su texto es el que no se puede
+   recortar: lleva el importe y los impuestos. */
+
+@media (max-width: 620px) {
+  .hero .actions { flex-direction: row; flex-wrap: nowrap; gap: 9px; }
+  .hero .actions .btn { width: auto; font-size: 13.5px; padding-inline: 14px; }
+  .hero .actions .btn-primary { flex: 1.75; }
+  .hero .actions .btn-ghost { flex: 1; }
+}
+
+@media (max-width: 370px) {
+  /* Ya no cabe en una línea: se permite partir antes que recortar el precio. */
+  .hero .actions .btn { white-space: normal; line-height: 1.25; font-size: 12.5px; }
+}
