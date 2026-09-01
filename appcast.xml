@@ -10,8 +10,47 @@
       <title>1.0</title>
       <pubDate>Tue, 01 Sep 2026 02:22:42 +0200</pubDate>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[
-        <ul><li>Describe aquí los cambios de esta versión.</li></ul>
+      <description xml:lang="en"><![CDATA[
+        <p>First release. DevToolbox lives in your menu bar and frees up the space
+           that development work leaves behind.</p>
+        <ul>
+          <li><b>Cleaner</b> — Xcode DerivedData, user caches and logs, SwiftPM,
+              npm and bun caches, iOS DeviceSupport, archives and
+              <code>node_modules</code> under ~/Projects. It scans on open, shows
+              what each category weighs, and lists every file before deleting.</li>
+          <li><b>Simulators</b> — removes unused iOS devices and runtimes through
+              <code>simctl</code>, always keeping the newest one.</li>
+          <li><b>Uninstaller</b> — deletes an app together with the preferences,
+              caches and support files it scatters around ~/Library.</li>
+          <li><b>Menu bar metrics</b> — CPU, memory, free disk and network speed,
+              each one switchable.</li>
+          <li><b>Processes</b> — the most demanding ones, with a button to quit them.</li>
+          <li><b>Keep awake</b> — stops the Mac sleeping during long builds.</li>
+          <li><b>Scheduled cleaning</b> — daily, every three days or weekly.</li>
+        </ul>
+        <p>Everything goes to the Trash unless you turn on permanent deletion.
+           14-day trial with every feature unlocked.</p>
+      ]]></description>
+      <description xml:lang="es"><![CDATA[
+        <p>Primera versión. DevToolbox vive en la barra de menús y libera el espacio
+           que va dejando el trabajo de desarrollo.</p>
+        <ul>
+          <li><b>Limpiador</b> — DerivedData de Xcode, cachés y logs de usuario,
+              SwiftPM, cachés de npm y bun, iOS DeviceSupport, archivos y
+              <code>node_modules</code> en ~/Projects. Escanea al abrirse, enseña
+              cuánto pesa cada categoría y lista los archivos antes de borrar.</li>
+          <li><b>Simuladores</b> — elimina dispositivos y runtimes de iOS sin usar
+              mediante <code>simctl</code>, conservando siempre el más nuevo.</li>
+          <li><b>Desinstalador</b> — borra una app junto con las preferencias,
+              cachés y archivos de soporte que reparte por ~/Library.</li>
+          <li><b>Métricas en la barra</b> — CPU, memoria, disco libre y velocidad
+              de red, cada una activable por separado.</li>
+          <li><b>Procesos</b> — los que más consumen, con botón para terminarlos.</li>
+          <li><b>Mantener despierto</b> — evita que el Mac se duerma en builds largos.</li>
+          <li><b>Limpieza automática</b> — diaria, cada tres días o semanal.</li>
+        </ul>
+        <p>Todo va a la Papelera salvo que actives el borrado definitivo.
+           14 días de prueba con todo desbloqueado.</p>
       ]]></description>
       <enclosure url="https://github.com/jmhdevelop/devtoolbox-releases/releases/download/v1.0/DevToolbox-1.0.dmg"
                  sparkle:version="1.0"
