@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to free up Xcode disk space on Mac: what to delete and what to keep (2026)</title>
+<meta name="description" content="Xcode piles up tens of gigabytes in DerivedData, simulators, DeviceSupport and archives. What each folder holds, which ones are safe to delete, and which are not.">
+<link rel="canonical" href="https://devtoolbox.softapp.tech/en/guides/free-up-xcode-space/">
+<link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/guias/liberar-espacio-xcode/">
+<link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/guides/free-up-xcode-space/">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="icon" href="../../../favicon.png" type="image/png">
+<link rel="stylesheet" href="../../../styles.css">
+<script defer src="https://metrics.softapp.tech/b.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo",
+ "name":"How to free up Xcode disk space on Mac",
+ "description":"Which folders Xcode fills, how much they weigh, and which are safe to delete.",
+ "inLanguage":"en","totalTime":"PT5M",
+ "step":[
+  {"@type":"HowToStep","name":"Delete DerivedData","text":"Remove ~/Library/Developer/Xcode/DerivedData. These are intermediate build products and Xcode rebuilds them."},
+  {"@type":"HowToStep","name":"Remove unused simulators","text":"Run xcrun simctl delete unavailable to drop the ones Xcode no longer supports."},
+  {"@type":"HowToStep","name":"Clear iOS DeviceSupport","text":"Delete ~/Library/Developer/Xcode/iOS DeviceSupport. It re-downloads when you connect the device."},
+  {"@type":"HowToStep","name":"Check your archives","text":"Review ~/Library/Developer/Xcode/Archives before deleting: it holds signed builds you may still need."}
+ ]}
+</script>
+</head><body>
+<div class="glow" aria-hidden="true"></div>
+<header><div class="wrap">
+  <a class="logo" href="../../"><img src="../../../icon.png" width="38" height="38" alt="DevToolbox"></a>
+  <a class="btn btn-primary btn-sm" href="../../#pricing">Buy</a>
+</div></header>
+
+<main id="main"><article class="reveal in" style="padding:40px 0 80px">
+<div class="wrap" style="max-width:760px">
+  <p class="eyebrow">Guide</p>
+  <h1 style="font-size:clamp(2rem,5vw,3rem)">How to free up Xcode disk space on Mac</h1>
+  <p class="lead" style="margin-bottom:34px">
+    Xcode spreads what it uses across half a dozen folders, none of them obvious.
+    On a Mac with eighteen months of work, 30 to 60 GB of recoverable space is
+    normal. Here is what sits in each one, and which you can delete without
+    thinking twice.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">DerivedData — delete it, no fear</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/DerivedData</code></p>
+  <p class="lead">
+    Almost always the biggest, and the safest to remove: intermediate build
+    products, indexes and logs. Xcode rebuilds it on its own. The only cost is
+    that the next build of each project takes longer.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Simulators — use simctl, never by hand</h2>
+  <p class="lead"><code>~/Library/Developer/CoreSimulator/Devices</code></p>
+  <p class="lead">
+    Every simulator you boot keeps its own disk. How you delete them matters:
+    removing those folders directly leaves Xcode pointing at devices that no
+    longer exist. The correct way is <code>xcrun simctl delete unavailable</code>
+    for the unsupported ones, and <code>xcrun simctl delete &lt;UDID&gt;</code>
+    for specific devices.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">iOS runtimes — several GB each</h2>
+  <p class="lead">
+    Every iOS version downloaded for the simulator weighs 5 to 8 GB. Run
+    <code>xcrun simctl runtime list</code> to see what you have. Always keep the
+    newest one and whichever your project requires.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">iOS DeviceSupport — it re-downloads</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></p>
+  <p class="lead">
+    Symbols for every device and OS version you have ever plugged in. If that
+    iPhone from 2019 is still on the list, its symbols are still there. They
+    download again next time you connect that device.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Archives — careful here</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/Archives</code></p>
+  <p class="lead">
+    <strong>Do not delete this blindly.</strong> It holds the signed builds you
+    shipped to the App Store, with their debug symbols. Without them you cannot
+    read crash reports from released versions. Only delete archives for versions
+    you no longer support.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">And everything that is not Xcode</h2>
+  <p class="lead">
+    If you also work with Node, Docker or Android, there is often just as much
+    there: <code>node_modules</code> scattered across your projects, unused
+    Docker images, the Gradle cache, the Cargo registry, CocoaPods. None of them
+    show up in the macOS Storage panel.
+  </p>
+
+  <div class="card" style="margin-top:44px">
+    <h3>Doing it without the terminal</h3>
+    <p>DevToolbox scans every one of those locations from the menu bar, tells you
+       what each weighs, and moves what you tick to the Trash. Simulators are
+       removed with <code>simctl</code>, the way it should be done.</p>
+    <p style="margin-top:16px">
+      <a class="btn btn-ghost btn-sm" href="../../../download/">Try free for 14 days</a>
+    </p>
+  </div>
+
+  <p class="small muted" style="margin-top:40px">
+    <a href="../../">← Back to DevToolbox</a>
+  </p>
+</div>
+</article></main>
+
+<footer><div class="wrap"><span>© 2026 DevToolbox</span></div></footer>
+</body></html>
