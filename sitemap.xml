@@ -6,12 +6,16 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://devtoolbox.softapp.tech/en/"/>
-    <lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <lastmod>2026-09-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
   </url>
   <url>
     <loc>https://devtoolbox.softapp.tech/en/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/"/>
-    <lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <lastmod>2026-09-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
   </url>
+  <url><loc>https://devtoolbox.softapp.tech/guias/liberar-espacio-xcode/</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://devtoolbox.softapp.tech/en/guides/free-up-xcode-space/</loc><lastmod>2026-09-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://devtoolbox.softapp.tech/privacidad/</loc><lastmod>2026-09-01</lastmod><priority>0.3</priority></url>
+  <url><loc>https://devtoolbox.softapp.tech/en/privacy/</loc><lastmod>2026-09-01</lastmod><priority>0.3</priority></url>
 </urlset>

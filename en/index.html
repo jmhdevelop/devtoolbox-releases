@@ -61,6 +61,21 @@ document.documentElement.classList.add('js');
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://softapp.tech/#org",
+      "name": "SOFTAPP SOLUTIONS LLC",
+      "url": "https://softapp.tech",
+      "logo": "https://devtoolbox.softapp.tech/icon-512.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://devtoolbox.softapp.tech/#web",
+      "url": "https://devtoolbox.softapp.tech/",
+      "name": "DevToolbox",
+      "publisher": { "@id": "https://softapp.tech/#org" },
+      "inLanguage": "en"
+    },
+    {
       "@type": "SoftwareApplication",
       "@id": "https://devtoolbox.softapp.tech/en/#app",
       "name": "DevToolbox",
@@ -409,6 +424,7 @@ document.documentElement.classList.add('js');
 
 <footer>
   <div class="wrap">
+    <a href="../en/guides/free-up-xcode-space/">Guide: how to free up Xcode disk space</a>
     <span>© 2026 DevToolbox</span>
     <div class="lang" role="group" aria-label="Language">
       <a href="../" class="" hreflang="es" lang="es" aria-label="Español">ES</a>

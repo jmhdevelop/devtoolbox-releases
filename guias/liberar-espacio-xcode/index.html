@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo liberar espacio de Xcode en Mac: qué borrar y qué no (2026)</title>
+<meta name="description" content="Xcode acumula decenas de gigas en DerivedData, simuladores, DeviceSupport y archivos. Qué ocupa cada carpeta, cuál se puede borrar sin miedo y cuál no.">
+<link rel="canonical" href="https://devtoolbox.softapp.tech/guias/liberar-espacio-xcode/">
+<link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/guides/free-up-xcode-space/">
+<link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/guias/liberar-espacio-xcode/">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="stylesheet" href="../../styles.css">
+<script defer src="https://metrics.softapp.tech/b.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo",
+ "name":"Cómo liberar espacio de Xcode en Mac",
+ "description":"Qué carpetas ocupa Xcode, cuánto pesan y cuáles se pueden borrar sin romper nada.",
+ "inLanguage":"es",
+ "totalTime":"PT5M",
+ "step":[
+  {"@type":"HowToStep","name":"Borrar DerivedData","text":"Elimina ~/Library/Developer/Xcode/DerivedData. Son builds intermedios y se regeneran al compilar."},
+  {"@type":"HowToStep","name":"Eliminar simuladores sin usar","text":"Usa xcrun simctl delete unavailable para quitar los que Xcode ya no soporta."},
+  {"@type":"HowToStep","name":"Limpiar iOS DeviceSupport","text":"Borra ~/Library/Developer/Xcode/iOS DeviceSupport. Se re-descarga al conectar el dispositivo."},
+  {"@type":"HowToStep","name":"Revisar los archivos","text":"Comprueba ~/Library/Developer/Xcode/Archives antes de borrar: contiene builds firmadas que quizá necesites."}
+ ]}
+</script>
+</head><body>
+<div class="glow" aria-hidden="true"></div>
+<header><div class="wrap">
+  <a class="logo" href="../../"><img src="../../icon.png" width="38" height="38" alt="DevToolbox"></a>
+  <a class="btn btn-primary btn-sm" href="../../#precio">Comprar</a>
+</div></header>
+
+<main id="main"><article class="reveal in" style="padding:40px 0 80px">
+<div class="wrap" style="max-width:760px">
+  <p class="eyebrow">Guía</p>
+  <h1 style="font-size:clamp(2rem,5vw,3rem)">Cómo liberar espacio de Xcode en Mac</h1>
+  <p class="lead" style="margin-bottom:34px">
+    Xcode reparte lo que ocupa entre media docena de carpetas, ninguna evidente.
+    En un Mac con año y medio de trabajo es normal encontrar entre 30 y 60 GB
+    recuperables. Esto es qué hay en cada una y cuál puedes borrar sin pensarlo.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">DerivedData — bórralo sin miedo</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/DerivedData</code></p>
+  <p class="lead">
+    Es lo que más ocupa casi siempre, y lo más seguro de borrar: productos
+    intermedios de compilación, índices y logs. Xcode lo regenera solo. Lo único
+    que pierdes es que la siguiente compilación de cada proyecto tarde más.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Simuladores — con simctl, nunca a mano</h2>
+  <p class="lead"><code>~/Library/Developer/CoreSimulator/Devices</code></p>
+  <p class="lead">
+    Cada simulador arrancado guarda su propio disco. Aquí importa <em>cómo</em>
+    se borra: eliminar esas carpetas directamente deja a Xcode con referencias
+    a dispositivos que ya no existen. La forma correcta es
+    <code>xcrun simctl delete unavailable</code> para los que ya no soporta, y
+    <code>xcrun simctl delete &lt;UDID&gt;</code> para los concretos.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Runtimes de iOS — varios GB cada uno</h2>
+  <p class="lead">
+    Cada versión de iOS descargada para el simulador pesa entre 5 y 8 GB. Con
+    <code>xcrun simctl runtime list</code> ves cuáles tienes. Conserva siempre el
+    más reciente y el que exija tu proyecto.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">iOS DeviceSupport — se re-descarga</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></p>
+  <p class="lead">
+    Símbolos de cada dispositivo y versión que hayas conectado alguna vez. Si
+    todavía tienes el iPhone de 2019 en la lista, ahí siguen sus símbolos. Se
+    vuelven a descargar la próxima vez que conectes ese aparato.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Archives — cuidado aquí</h2>
+  <p class="lead"><code>~/Library/Developer/Xcode/Archives</code></p>
+  <p class="lead">
+    <strong>Esta no la borres a ciegas.</strong> Contiene las builds firmadas que
+    subiste a la App Store, con sus símbolos de depuración. Sin ellos no puedes
+    leer los informes de fallos de versiones publicadas. Borra solo las de
+    versiones que ya no mantienes.
+  </p>
+
+  <h2 style="font-size:1.5rem;margin-top:38px">Y lo que no es de Xcode</h2>
+  <p class="lead">
+    Si además trabajas con Node, Docker o Android, ahí suele haber tanto o más:
+    <code>node_modules</code> repartidos por tus proyectos, imágenes de Docker
+    sin usar, la caché de Gradle, el registro de Cargo, los pods de CocoaPods.
+    Ninguna aparece en el «Almacenamiento» de macOS.
+  </p>
+
+  <div class="card" style="margin-top:44px">
+    <h3>Hacerlo sin comandos</h3>
+    <p>DevToolbox escanea todas esas ubicaciones desde la barra de menús, te dice
+       cuánto pesa cada una y borra a la Papelera lo que marques. Los simuladores
+       los elimina con <code>simctl</code>, como debe hacerse.</p>
+    <p style="margin-top:16px">
+      <a class="btn btn-ghost btn-sm" href="../../download/">Probar 14 días gratis</a>
+    </p>
+  </div>
+
+  <p class="small muted" style="margin-top:40px">
+    <a href="../../">← Volver a DevToolbox</a>
+  </p>
+</div>
+</article></main>
+
+<footer><div class="wrap"><span>© 2026 DevToolbox</span></div></footer>
+</body></html>
