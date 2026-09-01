@@ -3,232 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>DevToolbox — Limpia y vigila tu Mac desde la barra de menús</title>
-<meta name="description" content="Utilidad de barra de menús para macOS que libera los gigas que Xcode, los simuladores de iOS, Homebrew y node_modules ocupan sin avisar. Escanea, te enseña cuánto pesa cada cosa y borra a la Papelera. 5 € de por vida.">
-<link rel="canonical" href="https://devtoolbox.softapp.tech/">
-<link rel="alternate" hreflang="es" href="https://devtoolbox.softapp.tech/">
-<link rel="alternate" hreflang="en" href="https://devtoolbox.softapp.tech/en/">
-<link rel="alternate" hreflang="x-default" href="https://devtoolbox.softapp.tech/en/">
-<!-- Alternativas legibles por máquina, para agentes. -->
-<link rel="alternate" type="text/plain" href="https://devtoolbox.softapp.tech/llms.txt" title="LLM summary">
-<link rel="alternate" type="application/json" href="https://devtoolbox.softapp.tech/product.json" title="Machine-readable product">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<meta name="author" content="DevToolbox">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="DevToolbox">
-<meta property="og:locale" content="es_ES">
-<meta property="og:url" content="https://devtoolbox.softapp.tech/">
-<meta property="og:title" content="DevToolbox — Limpia y vigila tu Mac desde la barra de menús">
-<meta property="og:description" content="DerivedData, simuladores sin usar, cachés y node_modules. Te enseña cuánto ocupa cada cosa antes de borrar nada. 5 € de por vida.">
-<meta property="og:image" content="https://devtoolbox.softapp.tech/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="DevToolbox: tu Mac tiene 40 GB de basura de Xcode">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DevToolbox — Limpia y vigila tu Mac desde la barra de menús">
-<meta name="twitter:description" content="DerivedData, simuladores, cachés y node_modules. 5 € de por vida.">
-<meta name="twitter:image" content="https://devtoolbox.softapp.tech/og.png">
-
-<link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
-<link rel="icon" href="icon.png" sizes="128x128" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>DevToolbox — Limpia tu Mac de basura de desarrollo</title>
+<meta name="description" content="Utilidad de barra de menús para macOS. Recupera los gigas que Xcode, los simuladores y node_modules se comen sin que te enteres. 5 € de por vida.">
+<meta property="og:title" content="DevToolbox">
+<meta property="og:description" content="Recupera los gigas que Xcode se come sin que te enteres.">
 <meta name="theme-color" content="#08090a">
-<link rel="preload" href="styles.css?v=002a9b4f" as="style">
-<script>
-document.documentElement.classList.add('js');
-(function () {
-  try {
-    var KEY = 'dtb-lang';
-    if (localStorage.getItem(KEY)) return;
-    var here = location.pathname.indexOf('/en/') !== -1 ? 'en' : 'es';
-    var list = navigator.languages || [navigator.language || 'en'];
-    // El español solo se sirve a quien lo pide; el resto del mundo, inglés.
-    var wants = list.some(function (l) { return l.toLowerCase().indexOf('es') === 0; }) ? 'es' : 'en';
-    if (wants !== here) location.replace(wants === 'en' ? 'en/' : '../');
-  } catch (e) {}
-})();
-</script>
-<link rel="stylesheet" href="styles.css?v=002a9b4f">
-
-<!-- Datos estructurados: es lo que leen tanto Google para los resultados
-     enriquecidos como los rastreadores de IA para citar con precisión. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://devtoolbox.softapp.tech/#app",
-      "name": "DevToolbox",
-      "applicationCategory": "DeveloperApplication",
-      "applicationSubCategory": "Utilidad de limpieza y monitorización",
-      "operatingSystem": "macOS 14.0 o superior",
-      "softwareVersion": "1.0",
-      "url": "https://devtoolbox.softapp.tech/",
-      "downloadUrl": "https://github.com/jmhdevelop/devtoolbox-releases/releases/latest",
-      "screenshot": "https://devtoolbox.softapp.tech/og.png",
-     "image": "https://devtoolbox.softapp.tech/icon-256.png",
-     "image": "https://devtoolbox.softapp.tech/icon-256.png",
-      "inLanguage": "es",
-      "description": "Utilidad de barra de menús para macOS que localiza y elimina la basura que genera el desarrollo: DerivedData de Xcode, simuladores de iOS sin usar, iOS DeviceSupport, cachés de Homebrew, SwiftPM, npm y bun, y carpetas node_modules. Muestra el tamaño de cada categoría antes de borrar y envía todo a la Papelera. Incluye desinstalador de aplicaciones con archivos residuales, métricas de CPU, memoria, disco y red en la barra de menús, lista de procesos y modo de mantener el Mac despierto.",
-      "featureList": [
-        "Limpieza de DerivedData y cachés de Xcode",
-        "Eliminación de simuladores de iOS sin usar mediante simctl",
-        "Limpieza automática programada",
-        "Desinstalador de apps con archivos residuales de ~/Library",
-        "Métricas de CPU, memoria, disco y red en la barra de menús",
-        "Lista de procesos con mayor consumo",
-        "Mantener el Mac despierto durante compilaciones largas"
-      ],
-      "offers": {
-        "@type": "Offer",
-        "price": "5.00",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "url": "https://devtoolbox.softapp.tech/#precio",
-        "description": "Licencia perpetua, un solo pago, actualizaciones incluidas. Impuestos no incluidos; el importe final depende de tu país."
-      },
-      "softwareHelp": "https://devtoolbox.softapp.tech/#faq"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://devtoolbox.softapp.tech/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Por qué DevToolbox no está en la Mac App Store?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Porque el sandbox obligatorio de la App Store impide leer ~/Library, ejecutar simctl y modificar /Applications, que es justo lo que necesita para limpiar. Una versión sandboxed no podría borrar DerivedData ni desinstalar aplicaciones. Lo que sí cabe dentro del sandbox se publica aparte como DevToolbox Lite, gratuita."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Es seguro instalar DevToolbox fuera de la App Store?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. La aplicación va firmada con Developer ID y notarizada por Apple, de modo que macOS la abre sin advertencias de Gatekeeper. Cada actualización se descarga firmada con EdDSA y la app la rechaza si la firma no coincide."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Qué borra exactamente DevToolbox?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Solo las categorías que marques, y siempre a la Papelera. Antes de confirmar muestra el listado completo con rutas y tamaños. Los simuladores se eliminan con simctl, la vía oficial de Apple: borrar sus carpetas a mano deja Xcode en estado inconsistente."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿La licencia de DevToolbox sirve en varios Macs?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. La licencia es del usuario, no de la máquina, y se valida sin conexión a internet, por lo que puede usarse en todos tus Macs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuánto cuesta DevToolbox?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "5 euros más impuestos, en un pago único. El impuesto aplicable depende del país del comprador y se calcula al pagar. La licencia es perpetua e incluye las actualizaciones. Hay 14 días de prueba con todas las funciones, sin tarjeta ni registro."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
+<link rel="stylesheet" href="styles.css">
+  <script defer src="https://metrics.softapp.tech/b.js"></script>
 </head>
 <body>
 
-<a class="skip" href="#main">Saltar al contenido</a>
-<div class="progress" role="presentation"></div>
-
 <header>
   <div class="wrap">
-    <a class="logo" href="./" aria-label="DevToolbox">
-      <img src="icon.png" width="38" height="38" alt="DevToolbox"
-           srcset="icon.png 1x, icon-256.png 2x" decoding="async">
-    </a>
+    <span class="logo">DevToolbox</span>
+    <nav>
+      <a href="#funciones">Funciones</a>
+      <a href="#precio">Precio</a>
+      <a href="#lite">Lite</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
     <a class="btn btn-primary btn-sm" href="#precio">Comprar</a>
   </div>
 </header>
 
 <!-- ── Portada ─────────────────────────────────────────────────────────── -->
-<div class="glow" aria-hidden="true"></div>
-<main id="main">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>Tu Mac guarda <em>gigas</em> que nunca has visto.</h1>
+      <p class="eyebrow">macOS · barra de menús</p>
+      <h1>Tu Mac tiene 40&nbsp;GB de basura de Xcode.</h1>
       <p class="lead">
-        Cachés, restos de apps desinstaladas, entornos de desarrollo y
-        carpetas temporales que crecen solas. DevToolbox las encuentra, te
-        dice cuánto pesan y las borra cuando tú lo digas.
+        DerivedData, simuladores que no arrancas desde hace un año, cachés,
+        <code>node_modules</code> de proyectos muertos. DevToolbox te enseña
+        cuánto ocupa cada cosa antes de tocar nada.
       </p>
       <div class="actions">
-        <a class="btn btn-primary" href="#precio">Comprar por 5 € + Impuestos</a>
-        <a class="btn btn-ghost" href="download/">Probar 14 días gratis</a>
+        <a class="btn btn-primary" href="#precio">Comprar por 5 €</a>
+        <a class="btn btn-ghost" href="https://github.com/jmhdevelop/devtoolbox-releases/releases/latest">Descargar y probar</a>
       </div>
-      <p class="note" id="que-es"><strong>DevToolbox</strong> es una utilidad de barra de menús para macOS 14 o superior que libera espacio eliminando los archivos temporales del desarrollo en Xcode, iOS y Node.js.<br>Pago único, 5 € más impuestos. La descarga es la app completa: 14 días con todo desbloqueado, sin tarjeta ni registro.</p>
+      <p class="note">14 días de prueba, sin tarjeta ni registro. macOS 14 o superior.</p>
     </div>
 
-    <!-- Simulador del panel: se toca, no es una captura. -->
-    <img class="shot" src="app.jpg" width="440" height="596"
-         srcset="app.jpg 1x, app@2x.jpg 2x"
-         alt="Panel de DevToolbox abierto desde la barra de menús, con las métricas del sistema y la lista de categorías que ocupan espacio." fetchpriority="high" decoding="async">
+    <!-- Réplica del panel real, en HTML: siempre coincide con la app. -->
+    <div class="panel" aria-hidden="true">
+      <div class="tiles">
+        <div class="tile">
+          <div class="label">Disco</div><div class="value">91,7 GB</div>
+          <div class="cap">libres</div>
+          <div class="meter"><i style="width:56%;background:var(--green)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">RAM</div><div class="value">10 GB</div>
+          <div class="cap">de 17,2 GB</div>
+          <div class="meter"><i style="width:58%;background:var(--yellow)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">CPU</div><div class="value">38 %</div>
+          <div class="cap">en uso</div>
+          <div class="meter"><i style="width:38%;background:var(--red)"></i></div>
+        </div>
+        <div class="tile">
+          <div class="label">Red</div><div class="value">↓ 1,1M</div>
+          <div class="cap">↑ 10K</div>
+          <div class="meter"><i style="width:72%;background:var(--blue)"></i></div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <span class="on">Limpiador</span><span>Apps</span><span>Procesos</span><span>Ajustes</span>
+      </div>
+
+      <div class="rows">
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">DerivedData</span><br><span class="sub">Builds intermedios de Xcode</span></span>
+          <span class="size">24,8 GB</span>
+        </div>
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">Simuladores sin usar</span><br><span class="sub">Dispositivos que ya no soporta</span></span>
+          <span class="size">11,2 GB</span>
+        </div>
+        <div class="row">
+          <span class="check on"></span>
+          <span><span class="name">iOS DeviceSupport</span><br><span class="sub">Símbolos de versiones antiguas</span></span>
+          <span class="size">6,4 GB</span>
+        </div>
+        <div class="row">
+          <span class="check"></span>
+          <span><span class="name">node_modules</span><br><span class="sub">En ~/Projects</span></span>
+          <span class="size">3,1 GB</span>
+        </div>
+      </div>
+      <div class="cta-row">🗑 Limpiar 42,4 GB</div>
+    </div>
   </div>
 </section>
 
 <!-- ── Ver antes de borrar ─────────────────────────────────────────────── -->
-<section class="reveal disk">
-  <div class="wrap">
-    <p class="eyebrow">Lo que se recupera</p>
-    <div class="figure">
-      <p class="huge">42,4 <span>GB</span></p>
-      <p class="huge-cap">recuperables</p>
-    </div>
-
-    <!-- Una sola serie destacada sobre pista neutra. La pista queda por debajo
-         de 3:1 de contraste, así que las cifras van escritas, no solo en color. -->
-    <div class="diskbar" role="img"
-         aria-label="De 460 GB de disco, 42,4 GB son basura recuperable">
-      <span class="seg used" style="flex:325.6"></span>
-      <span class="seg junk" style="flex:42.4"></span>
-      <span class="seg free" style="flex:92"></span>
-    </div>
-    <div class="diskkey">
-      <span><i class="k-used"></i>Ocupado · 325,6 GB</span>
-      <span><i class="k-junk"></i>Recuperables · 42,4 GB</span>
-      <span><i class="k-free"></i>Libre · 92 GB</span>
-    </div>
-
-    <ol class="specs">
-        <li>
-          <code>~/Library/Developer/Xcode/DerivedData</code>
-          <span class="wgt"><i style="width:59%"></i></span>
-          <b>24,8 GB</b>
-        </li>
-        <li>
-          <code>~/Library/Developer/CoreSimulator</code>
-          <span class="wgt"><i style="width:26%"></i></span>
-          <b>11,2 GB</b>
-        </li>
-        <li>
-          <code>~/Library/Developer/Xcode/iOS DeviceSupport</code>
-          <span class="wgt"><i style="width:15%"></i></span>
-          <b>6,4 GB</b>
-        </li>
-    </ol>
-    <p class="specnote">Los tres primeros suelen ser el 80% del total.</p>
-  </div>
-</section>
-
-<section class="reveal">
+<section>
   <div class="wrap split">
     <div>
       <p class="eyebrow">Sin sustos</p>
@@ -260,7 +133,7 @@ document.documentElement.classList.add('js');
 </section>
 
 <!-- ── Funciones ───────────────────────────────────────────────────────── -->
-<section class="reveal" id="funciones">
+<section id="funciones">
   <div class="wrap">
     <p class="eyebrow">Qué hace</p>
     <h2>Seis herramientas, un icono.</h2>
@@ -308,7 +181,7 @@ document.documentElement.classList.add('js');
 </section>
 
 <!-- ── Precio ──────────────────────────────────────────────────────────── -->
-<section class="reveal" id="precio">
+<section id="precio">
   <div class="wrap" style="text-align:center">
     <p class="eyebrow">Precio</p>
     <h2>Se paga una vez.</h2>
@@ -317,7 +190,7 @@ document.documentElement.classList.add('js');
     </p>
 
     <div class="price-box">
-      <div class="price">5<sup> € + impuestos</sup></div>
+      <div class="price">5<sup> € + IVA</sup></div>
       <p class="muted small" style="margin-top:8px">Licencia de por vida</p>
       <ul>
         <li>Todas las funciones, para siempre</li>
@@ -327,16 +200,16 @@ document.documentElement.classList.add('js');
         <li>14 días de prueba antes de pagar</li>
       </ul>
       <a class="btn btn-primary" style="width:100%;justify-content:center"
-         href="https://buy.stripe.com/3cI14n2pW9Ci5G477z6Ri00">Comprar licencia · 5 € + Impuestos</a>
+         href="https://buy.stripe.com/TU-PAYMENT-LINK">Comprar licencia</a>
       <p class="muted small" style="margin-top:14px">
-        Pago mediante Stripe. Los impuestos de tu país se calculan al pagar.<br>Recibes la clave por email al instante.
+        Pago mediante Stripe. Recibes la clave por email al instante.
       </p>
     </div>
   </div>
 </section>
 
 <!-- ── Lite ────────────────────────────────────────────────────────────── -->
-<section class="reveal" id="lite">
+<section id="lite">
   <div class="wrap split flip">
     <div>
       <div class="card">
@@ -345,9 +218,6 @@ document.documentElement.classList.add('js');
         <p>Monitor de CPU, memoria, disco y red con histórico y batería.
            Analizador de carpetas con detector de archivos grandes olvidados
            y de duplicados. Aviso cuando queda poco disco.</p>
-        <p style="margin-top:16px">
-          <a class="btn btn-ghost btn-sm" href="https://apps.apple.com/app/id6807367722">En la Mac App Store</a>
-        </p>
       </div>
     </div>
     <div>
@@ -363,7 +233,7 @@ document.documentElement.classList.add('js');
 </section>
 
 <!-- ── Preguntas ───────────────────────────────────────────────────────── -->
-<section class="reveal" id="faq">
+<section id="faq">
   <div class="wrap" style="max-width:760px">
     <p class="eyebrow">Preguntas</p>
     <h2>Lo que suelen preguntar.</h2>
@@ -403,17 +273,9 @@ document.documentElement.classList.add('js');
   </div>
 </section>
 
-</main>
-
-<button class="top" aria-label="Volver arriba">↑</button>
-
 <footer>
   <div class="wrap">
     <span>© 2026 DevToolbox</span>
-    <div class="lang" role="group" aria-label="Idioma">
-      <a href="./" class="on" hreflang="es" lang="es" aria-label="Español">ES</a>
-      <a href="en/" class="" hreflang="en" lang="en" aria-label="English">EN</a>
-    </div>
     <nav>
       <a href="https://github.com/jmhdevelop/devtoolbox-releases/releases">Versiones</a>
       <a href="#faq">Soporte</a>
@@ -421,18 +283,5 @@ document.documentElement.classList.add('js');
   </div>
 </footer>
 
-  <script src="app.js?v=002a9b4f" defer></script>
-  <script>
-    /* Al imprimir se abren todas las preguntas y se restauran después: en papel
-       no hay nada que desplegar. */
-    addEventListener('beforeprint', () =>
-      document.querySelectorAll('details').forEach((d) => {
-        d.dataset.was = d.open; d.open = true;
-      }));
-    addEventListener('afterprint', () =>
-      document.querySelectorAll('details').forEach((d) => {
-        d.open = d.dataset.was === 'true';
-      }));
-  </script>
 </body>
 </html>
