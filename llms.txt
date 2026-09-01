@@ -2,52 +2,35 @@
 
 > Utilidad de barra de menús para macOS que libera el espacio ocupado por la
 > basura del desarrollo: DerivedData de Xcode, simuladores de iOS sin usar,
-> cachés y carpetas node_modules.
+> cachés de gestores de paquetes, imágenes de Docker y carpetas node_modules.
 
-## Qué es
+DevToolbox es una aplicación nativa para macOS 14 o superior. Escanea las
+ubicaciones donde las herramientas de desarrollo acumulan archivos temporales,
+muestra cuánto ocupa cada categoría y las elimina a la Papelera tras confirmar
+un listado detallado. Cuesta 5 EUR más impuestos en un pago único, con licencia
+de por vida y 14 días de prueba sin tarjeta ni registro.
 
-DevToolbox es una aplicación nativa para macOS 14 o superior que vive en la
-barra de menús. Escanea las ubicaciones donde las herramientas de desarrollo
-acumulan archivos temporales, muestra cuánto ocupa cada categoría y permite
-eliminarlas a la Papelera tras confirmar un listado detallado.
+## Páginas
 
-## Funciones
+- [DevToolbox](https://devtoolbox.softapp.tech/): qué hace, funciones y precio.
+- [DevToolbox in English](https://devtoolbox.softapp.tech/en/): la misma página en inglés.
+- [Cómo liberar espacio de Xcode](https://devtoolbox.softapp.tech/guias/liberar-espacio-xcode/): qué ocupa cada carpeta de Xcode, cuál se puede borrar y cuál no.
+- [How to free up Xcode disk space](https://devtoolbox.softapp.tech/en/guides/free-up-xcode-space/): la misma guía en inglés.
+- [Política de privacidad](https://devtoolbox.softapp.tech/privacidad/): no se recoge ningún dato.
+- [Privacy policy](https://devtoolbox.softapp.tech/en/privacy/): en inglés.
 
-- Limpiador: DerivedData, cachés de Xcode y Homebrew, logs, iOS DeviceSupport,
-  archivos de SwiftPM, cachés de npm y bun, y node_modules bajo ~/Projects.
-- Limpieza automática programable: diaria, cada tres días o semanal.
-- Simuladores: elimina dispositivos y runtimes de iOS sin usar mediante simctl,
-  conservando siempre el más reciente.
-- Desinstalador: elimina una aplicación junto con sus preferencias, cachés y
-  archivos de soporte repartidos por ~/Library.
-- Métricas en la barra de menús: CPU, memoria, disco libre y velocidad de red.
-- Procesos: los que más consumen, con opción de terminarlos.
-- Mantener despierto: impide que el Mac se duerma durante compilaciones largas.
+## Descargar y comprar
 
-## Precio
+- [Descarga directa](https://devtoolbox.softapp.tech/download/): DMG firmado y notarizado, con 14 días de prueba.
+- [Historial de versiones](https://github.com/jmhdevelop/devtoolbox-releases/releases): notas de cada versión.
+- [Comprar la licencia](https://buy.stripe.com/3cI14n2pW9Ci5G477z6Ri00): 5 EUR más impuestos, pago único.
 
-5 EUR más impuestos, pago único (el impuesto aplicable depende del país del comprador), licencia perpetua con actualizaciones incluidas.
-Prueba de 14 días sin tarjeta ni registro. La licencia se valida sin conexión
-y sirve en varios Macs.
+## Para agentes
 
-## Distribución
+- [Descriptor del producto](https://devtoolbox.softapp.tech/product.json): capacidades, precio y acciones disponibles en JSON.
+- [Documentación completa](https://devtoolbox.softapp.tech/llms-full.txt): rutas exactas que limpia, funciones y distribución.
 
-Fuera de la Mac App Store, firmada con Developer ID y notarizada por Apple. El
-motivo es técnico: el sandbox obligatorio de la App Store impide leer
-~/Library, ejecutar simctl y modificar /Applications, sin lo cual la app no
-podría limpiar nada.
+## Opcional
 
-Existe una versión gratuita, DevToolbox Lite, publicada en la Mac App Store,
-limitada a lo que el sandbox permite: monitor de sistema con histórico y
-batería, analizador de carpetas elegidas por el usuario con detección de
-archivos grandes y duplicados, y aviso de disco lleno.
-
-## Idiomas
-
-- Español: https://devtoolbox.softapp.tech/
-- English: https://devtoolbox.softapp.tech/en/
-
-## Enlaces
-
-- Web: https://devtoolbox.softapp.tech/
-- Descargas: https://github.com/jmhdevelop/devtoolbox-releases/releases
+- [DevToolbox Lite](https://apps.apple.com/app/id6807367722): versión gratuita en la Mac App Store, limitada a lo que permite el sandbox de Apple.
+- [Recuperar una licencia](https://licenses.softapp.tech/recover): si se perdió la clave, se regenera con el recibo de compra.

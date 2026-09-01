@@ -37,7 +37,7 @@
 <link rel="icon" href="../icon.png" sizes="128x128" type="image/png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta name="theme-color" content="#08090a">
-<link rel="preload" href="../styles.css?v=002a9b4f" as="style">
+<link rel="preload" href="../styles.css?v=b13d1792" as="style">
 <script>
 document.documentElement.classList.add('js');
 (function () {
@@ -52,7 +52,7 @@ document.documentElement.classList.add('js');
   } catch (e) {}
 })();
 </script>
-<link rel="stylesheet" href="../styles.css?v=002a9b4f">
+<link rel="stylesheet" href="../styles.css?v=b13d1792">
 
 <!-- Datos estructurados: es lo que leen tanto Google para los resultados
      enriquecidos como los rastreadores de IA para citar con precisión. -->
@@ -194,8 +194,9 @@ document.documentElement.classList.add('js');
     </div>
 
     <!-- Simulador del panel: se toca, no es una captura. -->
-    <img class="shot" src="../app.jpg" width="440" height="596"
-         srcset="../app.jpg 1x, ../app@2x.jpg 2x"
+    <img class="shot" src="../app-440.jpg" width="440" height="596"
+         srcset="../app-440.jpg 440w, ../app-660.jpg 660w, ../app-880.jpg 880w"
+         sizes="(max-width: 860px) 380px, 440px"
          alt="The DevToolbox panel open from the menu bar, showing system metrics and the list of categories taking up space." fetchpriority="high" decoding="async">
   </div>
 </section>
@@ -437,6 +438,6 @@ document.documentElement.classList.add('js');
   </div>
 </footer>
 
-  <script src="../app.js?v=002a9b4f" defer></script>
+  <script src="../app.js?v=b13d1792" defer></script>
 </body>
 </html>

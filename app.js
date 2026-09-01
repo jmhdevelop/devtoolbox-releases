@@ -3,12 +3,30 @@
 
 /* Progreso de lectura. */
 const bar = document.querySelector('.progress');
+const arriba = document.querySelector('.top');
+
+// `scrollHeight` obliga al navegador a recalcular la maquetación. Leerlo en cada
+// scroll provocaba redistribución forzada; ahora se mide una vez y solo se
+// vuelve a medir si cambia el tamaño de la ventana.
+let alturaMax = 0;
+const medir = () => { alturaMax = document.documentElement.scrollHeight - innerHeight; };
+
+let pendiente = false;
 const onScroll = () => {
-  const max = document.documentElement.scrollHeight - innerHeight;
-  bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
-  document.querySelector('.top')?.classList.toggle('on', scrollY > 700);
+  if (pendiente) return;
+  pendiente = true;
+  // Escribir dentro de rAF evita alternar lecturas y escrituras de estilo.
+  requestAnimationFrame(() => {
+    bar.style.width = (alturaMax > 0 ? (scrollY / alturaMax) * 100 : 0) + '%';
+    arriba?.classList.toggle('on', scrollY > 700);
+    pendiente = false;
+  });
 };
+
 addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', medir, { passive: true });
+addEventListener('load', medir);
+medir();
 onScroll();
 
 
